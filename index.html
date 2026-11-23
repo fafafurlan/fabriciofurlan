@@ -30,9 +30,9 @@
   <meta name="theme-color" content="#faf8f5">
   <meta name="color-scheme" content="light dark">
 
-  <!-- ✏️ EDITAR: depois de publicar, troque "fabriciofurlan.netlify.app" pela URL real do seu site
+  <!-- ✏️ EDITAR: URL oficial do site (publicado na Vercel). Se mudar de domínio, troque "fabriciofurlan.vercel.app"
        (aparece aqui, no Open Graph e no JSON-LD logo abaixo). -->
-  <link rel="canonical" href="https://fabriciofurlan.netlify.app/">
+  <link rel="canonical" href="https://fabriciofurlan.vercel.app/">
 
   <!-- ============ OPEN GRAPH (WhatsApp, LinkedIn, Facebook) ============ -->
   <meta property="og:type" content="profile">
@@ -40,10 +40,10 @@
   <meta property="og:site_name" content="Fabrício Furlan">
   <meta property="og:title" content="Fabrício Furlan — Estágio em TI | IT Assistant">
   <meta property="og:description" content="Estudante de TI na FIAP, movido por IA, desenvolvimento web e resolução de problemas reais.">
-  <meta property="og:url" content="https://fabriciofurlan.netlify.app/">
+  <meta property="og:url" content="https://fabriciofurlan.vercel.app/">
   <!-- ✏️ EDITAR: a imagem de compartilhamento precisa de URL ABSOLUTA (https://…).
        Suba o arquivo og-image.png (1200×630) na mesma pasta do index.html. -->
-  <meta property="og:image" content="https://fabriciofurlan.netlify.app/og-image.png">
+  <meta property="og:image" content="https://fabriciofurlan.vercel.app/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Fabrício Furlan — Estágio em TI | IT Assistant">
@@ -52,7 +52,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fabrício Furlan — Estágio em TI | IT Assistant">
   <meta name="twitter:description" content="Estudante de TI na FIAP, movido por IA, desenvolvimento web e resolução de problemas reais.">
-  <meta name="twitter:image" content="https://fabriciofurlan.netlify.app/og-image.png">
+  <meta name="twitter:image" content="https://fabriciofurlan.vercel.app/og-image.png">
 
   <!-- Favicon em SVG embutido (monograma FF) -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23124559'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23faf8f5'%3EFF%3C/text%3E%3C/svg%3E">
@@ -64,7 +64,7 @@
     "@type": "Person",
     "name": "Fabrício Furlan",
     "jobTitle": "Estagiário de TI | IT Assistant",
-    "url": "https://fabriciofurlan.netlify.app/",
+    "url": "https://fabriciofurlan.vercel.app/",
     "email": "mailto:fabriciofurlan89@gmail.com",
     "telephone": "+55-14-98801-4684",
     "address": {
@@ -818,7 +818,14 @@
       color: #f4efe6;
       user-select: none;
     }
-    .avatar__photo { width: 100%; height: 100%; object-fit: cover; }
+    .avatar__photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 40%; /* ✏️ ajuste o enquadramento do rosto (horizontal vertical) */
+    }
 
     .avatar__chip {
       position: absolute;
@@ -2076,12 +2083,12 @@
 
             <div class="avatar__core">
               <!-- ✏️ EDITAR — SUA FOTO
-                   Para usar uma foto no lugar das iniciais:
-                   1. Salve a foto (quadrada, ~600×600px) como "foto-fabricio.jpg" na mesma pasta.
-                   2. Apague a linha <span class="avatar__initials">…</span> abaixo.
-                   3. Descomente a linha <img …> abaixo. -->
+                   Suba a foto como "foto-fabricio.jpg" (quadrada, ~800×800px) na mesma pasta do index.html.
+                   Ela aparece automaticamente por cima das iniciais. Se o arquivo não existir,
+                   a imagem se remove sozinha (onerror) e as iniciais "FF" continuam aparecendo.
+                   Para enquadrar o rosto, ajuste "object-position" em .avatar__photo no CSS. -->
               <span class="avatar__initials" aria-hidden="true">FF</span>
-              <!-- <img class="avatar__photo" src="foto-fabricio.jpg" alt="Foto de Fabrício Furlan" width="600" height="600"> -->
+              <img class="avatar__photo" src="foto-fabricio.jpg" alt="Foto de Fabrício Furlan" width="800" height="800" decoding="async" onerror="this.remove()">
             </div>
 
             <span class="avatar__chip avatar__chip--1" aria-hidden="true">
@@ -2616,7 +2623,7 @@
             <div>
               <span class="lab-card__tag">02 / Lógica</span>
               <h3 class="lab-card__title" id="demo-quiz-title">Quiz de lógica</h3>
-              <p class="lab-card__desc">Três desafios rápidos: uma sequência, um número binário e um clássico de raciocínio. O feedback aparece na hora.</p>
+              <p class="lab-card__desc">Cinco perguntas rápidas sorteadas de um banco com 22 desafios: sequências, lógica, matemática e tecnologia. O feedback aparece na hora, e cada rodada é diferente.</p>
             </div>
             <div class="quiz" id="quiz">
               <noscript><p>Ative o JavaScript para jogar o quiz.</p></noscript>
@@ -3245,39 +3252,87 @@
 
     /* =============================================================
        LAB 02 — QUIZ DE LÓGICA
-       ✏️ EDITAR: perguntas em QUIZ_QUESTIONS.
-         answer  → índice da alternativa correta (0 = primeira)
-         code    → (opcional) destaque em fonte monoespaçada
-         explain → explicação mostrada após a resposta
+       ✏️ EDITAR: banco de perguntas em QUIZ_POOL.
+         Cada rodada sorteia QUIZ_PER_ROUND perguntas do banco, sem repetir.
+         Para adicionar uma pergunta, copie um bloco { … } e ajuste:
+           q       → texto da pergunta
+           code    → (opcional) destaque em fonte monoespaçada
+           options → alternativas (2 a 5)
+           answer  → índice da alternativa correta (0 = primeira)
+           explain → explicação mostrada após a resposta
        ============================================================= */
-    const QUIZ_QUESTIONS = [
-      {
-        q: 'Qual número completa a sequência?',
-        code: '2, 6, 12, 20, 30, ?',
-        options: ['36', '40', '42', '48'],
-        answer: 2,
-        explain: 'Cada termo é n × (n + 1): 1×2, 2×3, 3×4, 4×5, 5×6… então o próximo é 6×7 = 42.'
-      },
-      {
-        q: 'Quanto vale este número binário em decimal?',
-        code: '1011₂',
-        options: ['9', '11', '13', '15'],
-        answer: 1,
-        explain: 'Cada casa vale o dobro da anterior: 1×8 + 0×4 + 1×2 + 1×1 = 11.'
-      },
-      {
-        q: 'Um arquivo de log dobra de tamanho a cada hora e lota o disco em 10 horas. Em quanto tempo ele ocupava metade do disco?',
-        options: ['5 horas', '8 horas', '9 horas', '9 h 30 min'],
-        answer: 2,
-        explain: 'Se ele dobra a cada hora, uma hora antes de lotar estava exatamente na metade: 9 horas.'
-      }
+    const QUIZ_PER_ROUND = 5;
+
+    const QUIZ_POOL = [
+      // --- Sequências ---
+      { q: 'Qual número completa a sequência?', code: '2, 4, 6, 8, ?', options: ['9', '10', '12', '16'], answer: 1,
+        explain: 'A sequência soma 2 a cada passo: 8 + 2 = 10.' },
+      { q: 'Qual número completa a sequência?', code: '5, 10, 15, 20, ?', options: ['22', '25', '30', '40'], answer: 1,
+        explain: 'São múltiplos de 5: o próximo é 25.' },
+      { q: 'Qual número completa a sequência?', code: '1, 2, 4, 8, ?', options: ['10', '12', '16', '32'], answer: 2,
+        explain: 'Cada número é o dobro do anterior: 8 × 2 = 16.' },
+      { q: 'Qual letra completa a sequência?', code: 'A, C, E, G, ?', options: ['H', 'I', 'J', 'K'], answer: 1,
+        explain: 'A sequência pula uma letra a cada passo: G, (H), I.' },
+      { q: 'Qual número não combina com os outros?', code: '2, 4, 7, 8', options: ['2', '4', '7', '8'], answer: 2,
+        explain: 'Todos são pares, menos o 7.' },
+
+      // --- Raciocínio lógico ---
+      { q: 'Todo gato é um animal. Mimi é um gato. Então Mimi é…', options: ['Um cachorro', 'Um animal', 'Uma planta', 'Não dá para saber'], answer: 1,
+        explain: 'Se todo gato é animal e Mimi é gato, Mimi com certeza é um animal.' },
+      { q: 'Ana é mais alta que Bia, e Bia é mais alta que Carla. Quem é a mais baixa?', options: ['Ana', 'Bia', 'Carla', 'Empate'], answer: 2,
+        explain: 'Ana > Bia > Carla. Carla é a mais baixa.' },
+      { q: 'Se A é maior que B, e B é maior que C, então…', options: ['C é maior que A', 'A é maior que C', 'A é igual a C', 'Não dá para saber'], answer: 1,
+        explain: 'É a propriedade transitiva: A > B > C, logo A > C.' },
+      { q: 'Se hoje é segunda-feira, que dia será depois de amanhã?', options: ['Terça', 'Quarta', 'Quinta', 'Domingo'], answer: 1,
+        explain: 'Amanhã é terça; depois de amanhã é quarta.' },
+      { q: 'Quantos meses do ano têm 28 dias?', options: ['1', '6', '11', '12'], answer: 3,
+        explain: 'Pegadinha! Todos os 12 meses têm pelo menos 28 dias.' },
+      { q: '3 máquinas fazem 3 peças em 3 minutos. Quantas peças 1 máquina faz em 3 minutos?', options: ['1', '3', '9', '6'], answer: 0,
+        explain: 'Cada máquina faz 1 peça a cada 3 minutos.' },
+
+      // --- Matemática rápida ---
+      { q: 'Quanto é a metade da metade de 100?', options: ['10', '25', '50', '75'], answer: 1,
+        explain: 'A metade de 100 é 50; a metade de 50 é 25.' },
+      { q: 'Quantos minutos há em 2 horas e meia?', options: ['120', '130', '150', '250'], answer: 2,
+        explain: '2 horas = 120 min, mais 30 min = 150 minutos.' },
+      { q: 'Quando o relógio marca exatamente 3h, qual é o ângulo entre os ponteiros?', options: ['45°', '90°', '120°', '180°'], answer: 1,
+        explain: 'Cada hora vale 30° (360° ÷ 12). De 12 até 3 são 3 × 30° = 90°.' },
+
+      // --- Tecnologia ---
+      { q: 'Quantos bits formam 1 byte?', options: ['4', '8', '16', '1024'], answer: 1,
+        explain: '1 byte = 8 bits.' },
+      { q: 'Quanto vale este número binário em decimal?', code: '10₂', options: ['1', '2', '10', '100'], answer: 1,
+        explain: 'Em binário, "10" significa 1×2 + 0×1 = 2.' },
+      { q: 'Qual atalho de teclado copia um texto selecionado?', options: ['Ctrl + V', 'Ctrl + C', 'Ctrl + Z', 'Ctrl + X'], answer: 1,
+        explain: 'Ctrl + C copia, Ctrl + V cola, Ctrl + X recorta e Ctrl + Z desfaz.' },
+      { q: 'Qual destes é um navegador de internet?', options: ['Excel', 'Windows', 'Chrome', 'Word'], answer: 2,
+        explain: 'O Chrome é um navegador. Excel e Word são programas do Office e o Windows é um sistema operacional.' },
+      { q: 'Para que serve o HTML?', options: ['Estruturar páginas web', 'Editar fotos', 'Fazer planilhas', 'Gravar vídeos'], answer: 0,
+        explain: 'HTML define a estrutura das páginas: títulos, textos, links e imagens.' },
+      { q: 'Qual extensão de arquivo é de uma planilha do Excel?', options: ['.mp3', '.xlsx', '.png', '.html'], answer: 1,
+        explain: '.xlsx é o formato das planilhas do Excel.' },
+      { q: 'O que significa a sigla "IA"?', options: ['Internet Avançada', 'Inteligência Artificial', 'Informação Automática', 'Interface Aberta'], answer: 1,
+        explain: 'IA = Inteligência Artificial, como o ChatGPT e o Claude.' },
+      { q: 'Em programação, qual o resultado de:', code: 'true && false', options: ['true', 'false'], answer: 1,
+        explain: 'O operador && (E) só dá true quando os dois lados são true.' }
     ];
 
-    // Mensagem final de acordo com a pontuação (índice = nº de acertos)
+    // Sorteia perguntas do banco sem repetir (embaralhamento Fisher–Yates)
+    function drawQuestions() {
+      const pool = QUIZ_POOL.slice();
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      return pool.slice(0, Math.min(QUIZ_PER_ROUND, pool.length));
+    }
+    let QUIZ_QUESTIONS = drawQuestions();
+
+    // Mensagem final de acordo com o desempenho (do pior para o melhor)
     const QUIZ_RESULTS = [
-      { title: 'Lógica é treino!', text: 'Que tal mais uma rodada? Agora você já conhece os truques.' },
-      { title: 'Bom começo!', text: 'Dá para chegar no 3/3. Tente de novo.' },
-      { title: 'Muito bom!', text: 'Faltou só um detalhe para gabaritar.' },
+      { title: 'Lógica é treino!', text: 'Cada rodada sorteia perguntas novas. Bora mais uma?' },
+      { title: 'Bom começo!', text: 'Dá para gabaritar. Tente de novo com outras perguntas.' },
+      { title: 'Muito bom!', text: 'Faltou pouco para gabaritar.' },
       { title: 'Gabaritou! 🥇', text: 'Raciocínio de medalhista. Bora conversar?' }
     ];
 
@@ -3388,6 +3443,7 @@
         const again = el('button', 'btn btn--ghost btn--sm', 'Jogar de novo');
         again.type = 'button';
         again.addEventListener('click', () => {
+          QUIZ_QUESTIONS = drawQuestions(); // novo sorteio a cada rodada
           state.index = 0; state.score = 0; state.results = [];
           renderQuestion(true);
         });
