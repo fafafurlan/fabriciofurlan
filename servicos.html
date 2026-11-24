@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--
+  ================================================================
+    SERVIÇOS / CATÁLOGO — FABRÍCIO FURLAN
+    Página separada do portfólio (index.html), com o mesmo visual.
+    Publicada em: https://fabriciofurlan.vercel.app/servicos.html
+
+    🔎 COMO EDITAR: procure por  ✏️ EDITAR  (Ctrl+F).
+    • PREÇOS → ficam em um só lugar: objeto PRICING no <script> do fim.
+    • Textos dos pacotes → nos <article class="plan"> abaixo.
+  ================================================================
+  -->
+
+  <title>Serviços — Social Media e Sites | Fabrício Furlan</title>
+  <meta name="description" content="Pacotes de social media e criação de sites: remodelação de perfil, posts frequentes, edição de fotos e vídeos e combo com site profissional. A partir de R$ 150/mês, com parcelamento.">
+  <meta name="author" content="Fabrício Furlan">
+  <meta name="theme-color" content="#faf8f5">
+  <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="https://fabriciofurlan.vercel.app/servicos.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Fabrício Furlan">
+  <meta property="og:title" content="Serviços — Social Media e Sites | Fabrício Furlan">
+  <meta property="og:description" content="Perfil profissional do feed ao site. Pacotes a partir de R$ 150/mês, com parcelamento.">
+  <meta property="og:url" content="https://fabriciofurlan.vercel.app/servicos.html">
+  <meta property="og:image" content="https://fabriciofurlan.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23124559'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23faf8f5'%3EFF%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Mesmo tema do portfólio (compartilha a preferência salva) -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      var theme = null;
+      try { theme = localStorage.getItem('ff-theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      root.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <style>
+    /* ================= 1. TOKENS (iguais ao portfólio) ================= */
+    :root {
+      --bg: #faf8f5; --bg-alt: #f2eee7; --surface: #ffffff; --surface-2: #f6f3ee;
+      --ink: #14202a; --ink-soft: #33414c; --muted: #5a6670;
+      --line: #e6e0d6; --line-strong: #d3cbbd;
+      --accent: #124559; --accent-hover: #0b3243; --accent-soft: #e2edf0; --accent-ink: #ffffff;
+      --glow: rgba(18, 69, 89, .10); --grid-line: rgba(18, 69, 89, .07);
+      --gold: #9a6a10; --gold-soft: #fbf1dc;
+      --wa: #198754; --wa-hover: #146c43;
+      --ok: #1d7a4a;
+      --shadow-sm: 0 1px 2px rgba(20, 32, 42, .06), 0 1px 1px rgba(20, 32, 42, .04);
+      --shadow-md: 0 10px 30px -12px rgba(20, 32, 42, .18), 0 2px 6px rgba(20, 32, 42, .05);
+      --shadow-lg: 0 28px 60px -24px rgba(18, 69, 89, .35), 0 4px 12px rgba(20, 32, 42, .06);
+      --font-display: "Fraunces", Georgia, serif;
+      --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+      --container: 1160px; --gutter: 20px; --header-h: 64px;
+      --radius: 14px; --radius-lg: 22px;
+      --ease: cubic-bezier(.2, .7, .2, 1);
+    }
+    [data-theme="dark"] {
+      --bg: #0d1418; --bg-alt: #111a1f; --surface: #151f25; --surface-2: #1a252c;
+      --ink: #e8eef1; --ink-soft: #c5d0d6; --muted: #98a8b1;
+      --line: #24323a; --line-strong: #33454f;
+      --accent: #7cc4d8; --accent-hover: #a3d8e6; --accent-soft: #16303a; --accent-ink: #08161c;
+      --glow: rgba(124, 196, 216, .09); --grid-line: rgba(124, 196, 216, .06);
+      --gold: #e8b94a; --gold-soft: #2b2312;
+      --ok: #5fd39a;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+      --shadow-md: 0 12px 30px -12px rgba(0, 0, 0, .6);
+      --shadow-lg: 0 28px 60px -24px rgba(0, 0, 0, .75), 0 0 0 1px rgba(124, 196, 216, .06);
+      color-scheme: dark;
+    }
+    @media (min-width: 768px) { :root { --gutter: 32px; --header-h: 72px; } }
+
+    /* ================= 2. BASE ================= */
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
+    [hidden] { display: none !important; }
+    html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 16px); }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    body {
+      min-height: 100vh; font-family: var(--font-body); line-height: 1.65;
+      color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; overflow-x: clip;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; background: none; border: 0; padding: 0; }
+    ul, ol { padding: 0; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.1; letter-spacing: -.02em; }
+    h1 em, h2 em { font-style: italic; color: var(--accent); }
+    .container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
+    .sr-only { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; padding: .75rem 1.1rem; border-radius: 10px; background: var(--accent); color: var(--accent-ink); font-weight: 600; text-decoration: none; }
+    .skip-link:focus { top: 12px; }
+    .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+    .icon { display: inline-block; width: 1.15em; height: 1.15em; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ================= 3. BOTÕES ================= */
+    .btn {
+      --btn-bg: transparent; --btn-ink: var(--ink); --btn-border: transparent;
+      display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+      min-height: 48px; padding: .8rem 1.35rem; border-radius: 999px;
+      border: 1px solid var(--btn-border); background: var(--btn-bg); color: var(--btn-ink);
+      font-weight: 600; font-size: .95rem; line-height: 1; text-decoration: none; white-space: nowrap;
+      transition: transform .25s var(--ease), background-color .25s, border-color .25s, color .25s, box-shadow .25s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn--primary { --btn-bg: var(--accent); --btn-ink: var(--accent-ink); }
+    .btn--primary:hover { --btn-bg: var(--accent-hover); box-shadow: var(--shadow-lg); }
+    .btn--ghost { --btn-border: var(--line-strong); --btn-bg: var(--surface); }
+    .btn--ghost:hover { --btn-border: var(--accent); --btn-ink: var(--accent); }
+    .btn--wa { --btn-bg: var(--wa); --btn-ink: #fff; }
+    .btn--wa:hover { --btn-bg: var(--wa-hover); }
+    .btn--sm { min-height: 44px; padding: .6rem 1.05rem; font-size: .875rem; }
+    .btn--block { width: 100%; }
+    .icon-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); transition: border-color .25s, color .25s, transform .3s var(--ease); }
+    .icon-btn:hover { border-color: var(--accent); color: var(--accent); transform: rotate(18deg); }
+    .theme-toggle .icon--sun { display: none; }
+    [data-theme="dark"] .theme-toggle .icon--sun { display: inline-block; }
+    [data-theme="dark"] .theme-toggle .icon--moon { display: none; }
+
+    /* ================= 4. HEADER ================= */
+    .site-header { position: fixed; inset: 0 0 auto; z-index: 50; height: var(--header-h); border-bottom: 1px solid transparent; transition: background-color .3s, border-color .3s; }
+    .site-header.is-scrolled { background: color-mix(in srgb, var(--bg) 86%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-color: var(--line); }
+    .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 100%; }
+    .brand { display: inline-flex; align-items: center; gap: .65rem; font-family: var(--font-display); font-weight: 600; font-size: 1.12rem; text-decoration: none; }
+    .brand__mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--accent); color: var(--accent-ink); font-style: italic; font-size: .95rem; }
+    .nav { display: none; }
+    .nav__list { display: flex; gap: .15rem; list-style: none; }
+    .nav__link { display: block; padding: .5rem .75rem; border-radius: 999px; font-size: .9rem; font-weight: 500; color: var(--ink-soft); text-decoration: none; }
+    .nav__link:hover { background: var(--surface-2); color: var(--ink); }
+    @media (min-width: 900px) { .nav { display: block; } }
+    .header__actions { display: flex; align-items: center; gap: .5rem; }
+    .back-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .875rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; padding: .5rem .25rem; }
+    .back-link:hover { color: var(--accent); }
+    .header__cta { display: none; }
+    @media (min-width: 560px) { .header__cta { display: inline-flex; } }
+
+    /* ================= 5. HERO ================= */
+    .hero { position: relative; isolation: isolate; padding: calc(var(--header-h) + clamp(2.5rem, 7vw, 5.5rem)) 0 clamp(3rem, 6vw, 5rem); overflow: hidden; text-align: center; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, #000 15%, transparent 72%);
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, #000 15%, transparent 72%);
+    }
+    .hero::after { content: ""; position: absolute; z-index: -1; width: 720px; height: 720px; top: -260px; left: 50%; margin-left: -360px; border-radius: 50%; background: radial-gradient(circle, var(--glow), transparent 65%); }
+    .eyebrow { display: inline-flex; align-items: center; gap: .65rem; font-family: var(--font-mono); font-size: .75rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+    .eyebrow::before, .eyebrow--center::after { content: ""; width: 28px; height: 1px; background: currentColor; }
+    .hero__title { margin: 1rem auto 0; max-width: 16ch; font-size: clamp(2.6rem, 7.5vw, 5rem); letter-spacing: -.035em; line-height: 1; }
+    .hero__lead { margin: 1.25rem auto 0; max-width: 56ch; font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--ink-soft); }
+    .hero__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.75rem; list-style: none; }
+    .chip { display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .9rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: .85rem; font-weight: 500; color: var(--ink-soft); }
+    .chip .icon { color: var(--accent); width: 1rem; height: 1rem; }
+
+    /* ================= 6. SEÇÕES ================= */
+    .section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+    .section--alt { background: var(--bg-alt); }
+    .section-head { max-width: 640px; margin: 0 auto clamp(2rem, 4vw, 3rem); text-align: center; }
+    .section-title { margin-top: .8rem; font-size: clamp(2rem, 4.4vw, 3rem); }
+    .section-lead { margin-top: .8rem; color: var(--muted); font-size: 1.05rem; }
+
+    /* ================= 7. SELETOR DE FREQUÊNCIA ================= */
+    .freq { display: flex; flex-direction: column; align-items: center; gap: .6rem; min-width: 0; margin: 0 0 2.25rem; padding: 0; border: 0; }
+    .freq__label { margin-inline: auto; padding: 0; font-size: .9rem; font-weight: 600; color: var(--ink-soft); }
+    .segmented { position: relative; display: inline-flex; padding: 5px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); box-shadow: var(--shadow-sm); }
+    .segmented input { position: absolute; opacity: 0; pointer-events: none; }
+    .segmented label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: .4rem; min-height: 42px; padding: .5rem 1.15rem; border-radius: 999px; font-size: .9rem; font-weight: 600; color: var(--muted); cursor: pointer; transition: color .3s; }
+    .segmented input:checked + label { color: var(--accent-ink); }
+    .segmented input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .segmented__pill { position: absolute; z-index: 0; top: 5px; bottom: 5px; left: 5px; border-radius: 999px; background: var(--accent); transition: transform .4s var(--ease), width .4s var(--ease); }
+
+    /* ================= 8. CARDS DE PACOTES ================= */
+    .plans { display: grid; gap: 1.25rem; align-items: stretch; }
+    @media (min-width: 980px) { .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .plan {
+      position: relative; display: flex; flex-direction: column; gap: 1.25rem;
+      padding: clamp(1.5rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: var(--radius-lg);
+      background: var(--surface); box-shadow: var(--shadow-sm);
+      transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s;
+    }
+    .plan:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--line-strong); }
+    .plan--featured { border: 2px solid var(--accent); box-shadow: var(--shadow-lg); }
+    @media (min-width: 980px) { .plan--featured { transform: translateY(-12px); } .plan--featured:hover { transform: translateY(-18px); } }
+    .plan__badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      padding: .35rem .9rem; border-radius: 999px; background: var(--accent); color: var(--accent-ink);
+      font-family: var(--font-mono); font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
+    }
+    .plan__icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: var(--accent-soft); color: var(--accent); }
+    .plan__icon .icon { width: 1.4rem; height: 1.4rem; }
+    .plan__name { font-size: 1.6rem; }
+    .plan__tagline { margin-top: .35rem; font-size: .95rem; color: var(--muted); }
+    .price { display: flex; align-items: baseline; flex-wrap: wrap; gap: .3rem; padding-block: .25rem; }
+    .price__currency { font-size: 1.1rem; font-weight: 600; color: var(--ink-soft); }
+    .price__value { font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 3.4rem); font-weight: 500; line-height: 1; letter-spacing: -.03em; display: inline-block; }
+    .price__value.is-changing { animation: priceSwap .45s var(--ease); }
+    .price__period { font-size: .95rem; color: var(--muted); }
+    .price__note { width: 100%; font-size: .82rem; color: var(--muted); }
+    .price__extra { display: inline-flex; align-items: center; gap: .4rem; width: fit-content; padding: .3rem .7rem; border-radius: 8px; background: var(--gold-soft); color: var(--gold); font-size: .8rem; font-weight: 600; }
+    .plan__list { display: grid; gap: .7rem; list-style: none; flex: 1; }
+    .plan__list li { display: grid; grid-template-columns: 22px 1fr; gap: .6rem; align-items: start; font-size: .95rem; color: var(--ink-soft); line-height: 1.5; }
+    .plan__list .icon { width: 20px; height: 20px; margin-top: .1rem; color: var(--ok); stroke-width: 2.2; }
+    .plan__list strong { color: var(--ink); font-weight: 600; }
+    .plan__list .is-plus .icon { color: var(--accent); }
+    .plan__divider { height: 1px; background: var(--line); border: 0; }
+    .plans__footnote { margin-top: 2rem; text-align: center; font-size: .9rem; color: var(--muted); }
+    .plans__footnote strong { color: var(--ink); }
+
+    /* ================= 9. COMO FUNCIONA ================= */
+    .steps { display: grid; gap: 1.25rem; list-style: none; counter-reset: step; }
+    @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+    .step { position: relative; padding: 1.75rem; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); counter-increment: step; }
+    .step::before { content: "0" counter(step); font-family: var(--font-mono); font-size: .8rem; color: var(--accent); letter-spacing: .1em; }
+    .step h3 { margin-top: .6rem; font-size: 1.3rem; }
+    .step p { margin-top: .4rem; font-size: .95rem; color: var(--muted); }
+
+    /* ================= 10. PROVA / EXEMPLO ================= */
+    .proof { display: grid; gap: 1.5rem; align-items: center; padding: clamp(1.5rem, 4vw, 2.5rem); border-radius: var(--radius-lg); background: var(--accent); color: var(--accent-ink); }
+    @media (min-width: 860px) { .proof { grid-template-columns: 1.4fr auto; } }
+    .proof h2 { color: var(--accent-ink); font-size: clamp(1.6rem, 3.4vw, 2.3rem); }
+    .proof p { margin-top: .5rem; opacity: .85; }
+    .proof .btn { --btn-bg: var(--accent-ink); --btn-ink: var(--accent); }
+
+    /* ================= 11. FAQ ================= */
+    .faq { max-width: 760px; margin-inline: auto; display: grid; gap: .75rem; }
+    .faq details { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); transition: border-color .25s; }
+    .faq details[open] { border-color: var(--line-strong); }
+    .faq summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; cursor: pointer; font-weight: 600; list-style: none; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary .icon { color: var(--accent); transition: transform .3s var(--ease); }
+    .faq details[open] summary .icon { transform: rotate(45deg); }
+    .faq details p { padding: 0 1.25rem 1.2rem; color: var(--muted); }
+
+    /* ================= 12. CTA FINAL + FOOTER ================= */
+    .cta { text-align: center; }
+    .cta__title { font-size: clamp(2.4rem, 6vw, 4rem); letter-spacing: -.03em; }
+    .cta p { margin: 1rem auto 0; max-width: 48ch; color: var(--muted); }
+    .cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 2rem; }
+    .site-footer { padding: 2rem 0; border-top: 1px solid var(--line); font-size: .85rem; color: var(--muted); }
+    .footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; }
+    .site-footer a { color: var(--ink-soft); font-weight: 500; text-decoration: none; }
+    .site-footer a:hover { color: var(--accent); }
+
+    .wa-float { position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 40; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: var(--wa); color: #fff; box-shadow: 0 14px 30px -10px rgba(25, 135, 84, .65); transition: transform .3s var(--ease); }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float .icon { width: 28px; height: 28px; }
+
+    /* ================= 13. ANIMAÇÕES DE SCROLL ================= */
+    .js .reveal { opacity: 0; transform: translate3d(0, 48px, 0); filter: blur(4px); transition: opacity .9s var(--ease), transform 1s var(--ease), filter .9s var(--ease); transition-delay: var(--d, 0ms); }
+    .js .reveal.is-visible { opacity: 1; transform: none; filter: none; }
+    .js .plan--featured.reveal.is-visible { transform: none; }
+    @media (min-width: 980px) { .js .plan--featured.reveal.is-visible { transform: translateY(-12px); } .js .plan--featured.reveal.is-visible:hover { transform: translateY(-18px); } }
+    .js .reveal .plan__list li { opacity: 0; transform: translateX(-12px); transition: opacity .5s var(--ease), transform .5s var(--ease); transition-delay: calc(var(--d, 0ms) + 300ms + var(--i, 0) * 60ms); }
+    .js .reveal.is-visible .plan__list li { opacity: 1; transform: none; }
+    @keyframes priceSwap { 0% { opacity: 0; transform: translateY(14px) scale(.96); } 100% { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+      .js .reveal, .js .reveal .plan__list li { opacity: 1; transform: none; filter: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/></symbol>
+    <symbol id="i-film" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.18"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 17h5M17 7h5"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html"><span class="brand__mark" aria-hidden="true">FF</span><span>Fabrício Furlan</span></a>
+      <nav class="nav" aria-label="Navegação da página">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#pacotes">Pacotes</a></li>
+          <li><a class="nav__link" href="#como-funciona">Como funciona</a></li>
+          <li><a class="nav__link" href="#duvidas">Dúvidas</a></li>
+          <li><a class="nav__link" href="index.html">Portfólio</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Modo escuro" aria-pressed="false" title="Alternar tema claro/escuro">
+          <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+        <a class="btn btn--wa btn--sm header__cta" data-wa="Olá, Fabrício! Vi seus serviços e quero saber mais." href="https://wa.me/5514988014684" target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Fale comigo<span class="sr-only"> no WhatsApp (abre em nova aba)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <p class="eyebrow eyebrow--center reveal">Serviços · Social Media &amp; Sites</p>
+        <h1 class="hero__title reveal" id="hero-title">Seu perfil <em>profissional</em>, do feed ao site.</h1>
+        <p class="hero__lead reveal">Remodelo seu Instagram, cuido dos posts com frequência e, se você quiser, crio o site do seu negócio. Tudo com cara de marca, sem você se preocupar.</p>
+        <ul class="hero__chips reveal" role="list">
+          <li class="chip"><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg>Perfil harmonizado</li>
+          <li class="chip"><svg class="icon" aria-hidden="true"><use href="#i-film"/></svg>Edição de fotos e vídeos</li>
+          <li class="chip"><svg class="icon" aria-hidden="true"><use href="#i-rocket"/></svg>Site profissional</li>
+          <li class="chip"><svg class="icon" aria-hidden="true"><use href="#i-card"/></svg>Parcelamento</li>
+        </ul>
+        <p style="margin-top:2rem" class="reveal"><a class="btn btn--primary" href="#pacotes">Ver pacotes e preços</a></p>
+      </div>
+    </section>
+
+    <!-- ============ PACOTES ============
+         ✏️ EDITAR: os PREÇOS ficam no objeto PRICING, no <script> do fim.
+         Os números escritos aqui no HTML são só o valor inicial (3x por semana). -->
+    <section class="section section--alt" id="pacotes" aria-labelledby="pacotes-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Pacotes</p>
+          <h2 class="section-title" id="pacotes-title">Escolha o seu <em>pacote</em>.</h2>
+          <p class="section-lead">Valores mensais. Escolha a frequência de posts e os preços se ajustam.</p>
+        </header>
+
+        <fieldset class="freq reveal">
+          <legend class="freq__label">Frequência de posts</legend>
+          <div class="segmented" id="freq">
+            <span class="segmented__pill" aria-hidden="true"></span>
+            <input type="radio" id="freq-3x" name="freq" value="semana3x" checked>
+            <label for="freq-3x">3x por semana</label>
+            <input type="radio" id="freq-diario" name="freq" value="diario">
+            <label for="freq-diario">Todos os dias</label>
+          </div>
+        </fieldset>
+
+        <div class="plans">
+          <!-- PACOTE 1 — ESSENCIAL -->
+          <article class="plan reveal" data-plan="essencial" aria-labelledby="plan-essencial">
+            <div>
+              <span class="plan__icon" aria-hidden="true"><svg class="icon"><use href="#i-grid"/></svg></span>
+            </div>
+            <div>
+              <h3 class="plan__name" id="plan-essencial">Essencial</h3>
+              <p class="plan__tagline">Seu perfil com cara de marca e postando com frequência.</p>
+            </div>
+            <p class="price" aria-live="polite">
+              <span class="price__currency">R$</span>
+              <span class="price__value" data-price="essencial">150</span>
+              <span class="price__period">/mês</span>
+              <span class="price__note" data-freq-note>Posts 3x por semana</span>
+            </p>
+            <hr class="plan__divider">
+            <ul class="plan__list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Remodelação do perfil</strong> para um visual mais profissional</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Harmonização das <strong>cores</strong> do perfil</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Organização dos <strong>posts</strong> e dos <strong>destaques</strong></span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Posts <strong data-freq-text>3x por semana</strong></span></li>
+            </ul>
+            <a class="btn btn--ghost btn--block" data-wa-plan="Essencial" href="https://wa.me/5514988014684" target="_blank" rel="noopener">Quero o Essencial<span class="sr-only"> (abre o WhatsApp)</span></a>
+          </article>
+
+          <!-- PACOTE 2 — COMPLETO -->
+          <article class="plan reveal" data-plan="completo" aria-labelledby="plan-completo">
+            <div>
+              <span class="plan__icon" aria-hidden="true"><svg class="icon"><use href="#i-film"/></svg></span>
+            </div>
+            <div>
+              <h3 class="plan__name" id="plan-completo">Completo</h3>
+              <p class="plan__tagline">Tudo incluso: você grava, eu edito e posto.</p>
+            </div>
+            <p class="price" aria-live="polite">
+              <span class="price__currency">R$</span>
+              <span class="price__value" data-price="completo">200</span>
+              <span class="price__period">/mês</span>
+              <span class="price__note" data-freq-note>Posts 3x por semana</span>
+            </p>
+            <hr class="plan__divider">
+            <ul class="plan__list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Tudo do Essencial</strong></span></li>
+              <li class="is-plus"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span><strong>Edição dos vídeos</strong> que você grava</span></li>
+              <li class="is-plus"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span><strong>Edição das fotos</strong> que você tira</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Posts <strong data-freq-text>3x por semana</strong></span></li>
+            </ul>
+            <a class="btn btn--ghost btn--block" data-wa-plan="Completo" href="https://wa.me/5514988014684" target="_blank" rel="noopener">Quero o Completo<span class="sr-only"> (abre o WhatsApp)</span></a>
+          </article>
+
+          <!-- PACOTE 3 — COMBO (destaque) -->
+          <article class="plan plan--featured reveal" data-plan="combo" aria-labelledby="plan-combo">
+            <span class="plan__badge">Mais completo</span>
+            <div>
+              <span class="plan__icon" aria-hidden="true"><svg class="icon"><use href="#i-rocket"/></svg></span>
+            </div>
+            <div>
+              <h3 class="plan__name" id="plan-combo">Combo Social + Site</h3>
+              <p class="plan__tagline">Perfil profissional e um site próprio para o seu negócio.</p>
+            </div>
+            <p class="price">
+              <span class="price__currency">R$</span>
+              <span class="price__value" data-price="combo">550</span>
+              <span class="price__note">Pagamento único, parcelável</span>
+              <span class="price__extra"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg><span>+ R$ <span data-price="manutencao">20</span>/mês de manutenção do site</span></span>
+            </p>
+            <hr class="plan__divider">
+            <ul class="plan__list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>1 mês do Essencial</strong>: remodelação, cores, organização e posts</span></li>
+              <li class="is-plus"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span><strong>Criação do site</strong> profissional, publicado e no ar</span></li>
+              <li class="is-plus"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span><strong>Manutenção do site</strong>: ajustes e atualizações por R$ 20/mês</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Parcelamento facilitado</span></li>
+            </ul>
+            <a class="btn btn--primary btn--block" data-wa-plan="Combo Social + Site" href="https://wa.me/5514988014684" target="_blank" rel="noopener">Quero o Combo<span class="sr-only"> (abre o WhatsApp)</span></a>
+          </article>
+        </div>
+
+        <p class="plans__footnote reveal">💳 <strong>Parcelo os pacotes</strong>: é só combinar comigo. · Qualquer serviço que envolva site tem manutenção de <strong>R$ 20/mês</strong>.</p>
+      </div>
+    </section>
+
+    <!-- ============ COMO FUNCIONA ============ -->
+    <section class="section" id="como-funciona" aria-labelledby="como-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Como funciona</p>
+          <h2 class="section-title" id="como-title">Simples, do <em>primeiro</em> contato ao resultado.</h2>
+        </header>
+        <ol class="steps">
+          <li class="step reveal">
+            <h3>Conversa no WhatsApp</h3>
+            <p>Você me conta sobre o seu negócio, escolhe o pacote e a frequência de posts. Combinamos o pagamento e o parcelamento.</p>
+          </li>
+          <li class="step reveal">
+            <h3>Remodelação do perfil</h3>
+            <p>Harmonizo as cores, organizo os posts e os destaques e deixo o seu perfil com cara de marca profissional.</p>
+          </li>
+          <li class="step reveal">
+            <h3>Posts com frequência</h3>
+            <p>Os posts saem na frequência escolhida. No Completo, você me manda as fotos e os vídeos e eu edito tudo.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ EXEMPLO DE SITE ============ -->
+    <section class="section section--alt" aria-labelledby="exemplo-title">
+      <div class="container">
+        <div class="proof reveal">
+          <div>
+            <h2 id="exemplo-title">Quer ver um site que eu fiz?</h2>
+            <p>O Studio Andressa Fabrício é um site de agendamento que criei para um cliente real, publicado e no ar.</p>
+          </div>
+          <a class="btn" href="https://studio-andressa-fabricio.vercel.app" target="_blank" rel="noopener">
+            Ver o site <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg><span class="sr-only"> (abre em nova aba)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DÚVIDAS ============
+         ✏️ EDITAR: perguntas frequentes (copie um <details> para adicionar) -->
+    <section class="section" id="duvidas" aria-labelledby="duvidas-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Dúvidas</p>
+          <h2 class="section-title" id="duvidas-title">Perguntas <em>frequentes</em>.</h2>
+        </header>
+        <div class="faq">
+          <details class="reveal">
+            <summary>Posso parcelar?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>Sim. Os pacotes podem ser parcelados; é só combinar comigo pelo WhatsApp.</p>
+          </details>
+          <details class="reveal">
+            <summary>O que é a remodelação do perfil?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>É deixar o seu Instagram com cara de marca: cores harmonizadas e posts e destaques organizados, para o perfil passar mais confiança logo na primeira visita.</p>
+          </details>
+          <details class="reveal">
+            <summary>Quem grava as fotos e os vídeos?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>Você grava, do seu jeito. No pacote Completo, eu edito as fotos e os vídeos que você me mandar e deixo tudo pronto para postar.</p>
+          </details>
+          <details class="reveal">
+            <summary>Qual a diferença entre 3x por semana e todos os dias?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>Só a frequência de posts. No Essencial fica R$ 150 (3x por semana) ou R$ 197 (todos os dias); no Completo, R$ 200 ou R$ 230.</p>
+          </details>
+          <details class="reveal">
+            <summary>Por que o site tem mensalidade?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <p>Os R$ 20/mês cobrem a manutenção do site: ajustes, atualizações e garantia de que ele continua funcionando bem. Vale para qualquer serviço que envolva criação de site.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA FINAL ============ -->
+    <section class="section section--alt cta" aria-labelledby="cta-title">
+      <div class="container reveal">
+        <p class="eyebrow eyebrow--center">Vamos começar?</p>
+        <h2 class="cta__title" id="cta-title" style="margin-top:.8rem">Bora deixar seu perfil <em>profissional</em>?</h2>
+        <p>Me chama no WhatsApp e me conta sobre o seu negócio. Te respondo com tudo certinho.</p>
+        <div class="cta__actions">
+          <a class="btn btn--wa" data-wa="Olá, Fabrício! Quero deixar meu perfil profissional. Pode me ajudar?" href="https://wa.me/5514988014684" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Chamar no WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+          </a>
+          <a class="btn btn--ghost" href="index.html">
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg> Ver meu portfólio
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <p>© <span id="year">2026</span> Fabrício Furlan · Social media e sites</p>
+      <p><a href="index.html">Portfólio</a> · <a href="mailto:fabriciofurlan89@gmail.com">fabriciofurlan89@gmail.com</a> · <a href="tel:+5514988014684">(14) 98801-4684</a></p>
+    </div>
+  </footer>
+
+  <a class="wa-float" data-wa="Olá, Fabrício! Vi seus serviços e quero saber mais." href="https://wa.me/5514988014684" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp (abre em nova aba)">
+    <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+  </a>
+
+  <script>
+  (() => {
+    'use strict';
+    const $ = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+    const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* =============================================================
+       ✏️ EDITAR — PREÇOS (em reais). Mudou aqui, muda na página toda.
+       ============================================================= */
+    const PRICING = {
+      essencial: { semana3x: 150, diario: 197 },
+      completo:  { semana3x: 200, diario: 230 },
+      combo: 550,       // pagamento único: 1 mês de social media + criação do site
+      manutencao: 20    // mensalidade de manutenção de qualquer site
+    };
+    const WHATSAPP = '5514988014684'; // ✏️ EDITAR: 55 + DDD + número
+    const FREQ_LABEL = { semana3x: '3x por semana', diario: 'todos os dias' };
+
+    /* ---------- Tema (mesma preferência do portfólio) ---------- */
+    const root = document.documentElement;
+    const themeBtn = $('#theme-toggle');
+    const setTheme = (t) => {
+      root.setAttribute('data-theme', t);
+      themeBtn.setAttribute('aria-pressed', String(t === 'dark'));
+      $('meta[name="theme-color"]').setAttribute('content', t === 'dark' ? '#0d1418' : '#faf8f5');
+    };
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+    themeBtn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+      try { localStorage.setItem('ff-theme', next); } catch (e) {}
+    });
+
+    /* ---------- Header ao rolar ---------- */
+    const header = $('.site-header');
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---------- Links do WhatsApp com mensagem pronta ---------- */
+    const waLink = (msg) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+    $$('[data-wa]').forEach((a) => { a.href = waLink(a.dataset.wa); });
+
+    function updatePlanLinks(freq) {
+      $$('[data-wa-plan]').forEach((a) => {
+        const plan = a.dataset.waPlan;
+        const detail = plan === 'Combo Social + Site'
+          ? `(R$ ${PRICING.combo} + R$ ${PRICING.manutencao}/mês de manutenção)`
+          : `com posts ${FREQ_LABEL[freq]} (R$ ${PRICING[plan.toLowerCase()][freq]}/mês)`;
+        a.href = waLink(`Olá, Fabrício! Tenho interesse no pacote ${plan} ${detail}. Podemos conversar?`);
+      });
+    }
+
+    /* ---------- Seletor de frequência ---------- */
+    const pill = $('.segmented__pill');
+    function movePill() {
+      const checked = $('#freq input:checked + label');
+      if (!checked || !pill) return;
+      pill.style.width = `${checked.offsetWidth}px`;
+      pill.style.transform = `translateX(${checked.offsetLeft - 5}px)`;
+    }
+
+    function setPrice(el, value) {
+      if (el.textContent === String(value)) return;
+      el.textContent = String(value);
+      if (!reduced()) {
+        el.classList.remove('is-changing');
+        void el.offsetWidth; // reinicia a animação
+        el.classList.add('is-changing');
+      }
+    }
+
+    function applyFrequency(freq) {
+      setPrice($('[data-price="essencial"]'), PRICING.essencial[freq]);
+      setPrice($('[data-price="completo"]'), PRICING.completo[freq]);
+      $$('[data-freq-note]').forEach((n) => { n.textContent = `Posts ${FREQ_LABEL[freq]}`; });
+      $$('[data-freq-text]').forEach((n) => { n.textContent = FREQ_LABEL[freq]; });
+      updatePlanLinks(freq);
+      movePill();
+    }
+
+    $$('#freq input').forEach((input) => input.addEventListener('change', () => applyFrequency(input.value)));
+    $('[data-price="combo"]').textContent = String(PRICING.combo);
+    $$('[data-price="manutencao"]').forEach((n) => { n.textContent = String(PRICING.manutencao); });
+    applyFrequency($('#freq input:checked').value);
+    window.addEventListener('resize', movePill);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(movePill);
+
+    /* ---------- Animações de entrada no scroll ---------- */
+    $$('.plans > .reveal, .steps > .reveal, .faq > .reveal').forEach((el) => {
+      const i = Array.from(el.parentElement.children).indexOf(el);
+      el.style.setProperty('--d', `${i * 120}ms`);
+    });
+    $$('.plan__list').forEach((list) => Array.from(list.children).forEach((li, i) => li.style.setProperty('--i', i)));
+
+    const items = $$('.reveal');
+    if (!('IntersectionObserver' in window) || reduced()) {
+      items.forEach((el) => el.classList.add('is-visible'));
+    } else {
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      items.forEach((el) => io.observe(el));
+    }
+
+    $('#year').textContent = String(new Date().getFullYear());
+  })();
+  </script>
+</body>
+</html>

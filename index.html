@@ -501,6 +501,9 @@
       background: currentColor;
     }
     .nav__cta { display: none; }
+    /* "Serviços" leva para outra página: destaque discreto com borda */
+    .nav__link--services { border: 1px solid var(--line-strong); }
+    .nav__link--services:hover { border-color: var(--accent); color: var(--accent); }
 
     .header__actions { display: flex; align-items: center; gap: .5rem; }
 
@@ -516,8 +519,8 @@
     .header__cta { display: none; }
     @media (min-width: 560px) { .header__cta { display: inline-flex; } }
 
-    /* Menu mobile (abaixo de 1100px) */
-    @media (max-width: 1099.98px) {
+    /* Menu mobile (abaixo de 1200px) */
+    @media (max-width: 1199.98px) {
       .nav {
         position: fixed;
         top: var(--header-h);
@@ -546,7 +549,7 @@
       .nav__link.is-active::after { display: none; }
       .nav__cta { display: flex; width: 100%; margin-top: 1rem; }
     }
-    @media (min-width: 1100px) {
+    @media (min-width: 1200px) {
       .menu-toggle { display: none; }
     }
 
@@ -2085,6 +2088,7 @@
           <li><a class="nav__link" href="#projetos">Projetos</a></li>
           <li><a class="nav__link" href="#laboratorio">Laboratório</a></li>
           <li><a class="nav__link" href="#contato">Contato</a></li>
+          <li><a class="nav__link nav__link--services" href="servicos.html">Serviços</a></li>
         </ul>
         <!-- CTA extra que aparece só dentro do menu mobile -->
         <a class="btn btn--wa nav__cta" href="https://wa.me/5514988014684?text=Ol%C3%A1%2C%20Fabr%C3%ADcio!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">
@@ -2843,6 +2847,15 @@
               <span></span>
             </li>
           </ul>
+
+          <!-- Link para a página de serviços (catálogo de social media e sites) -->
+          <a class="next-chapter" href="servicos.html">
+            <span>
+              <span class="next-chapter__label">Também faço social media e sites</span>
+              <span class="next-chapter__title">Ver pacotes e preços</span>
+            </span>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+          </a>
         </div>
 
         <div class="form-card reveal">
@@ -2931,6 +2944,7 @@
             <li><a href="#laboratorio">Laboratório</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contato">Contato</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
           </ul>
         </nav>
 
@@ -3079,7 +3093,7 @@
     document.addEventListener('click', (e) => {
       if (isMenuOpen() && !header.contains(e.target)) setMenu(false);
     });
-    window.matchMedia('(min-width: 1100px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+    window.matchMedia('(min-width: 1200px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
 
     /* =============================================================
        4. SCROLLSPY: destaca no menu a seção visível
