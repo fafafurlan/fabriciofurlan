@@ -432,7 +432,7 @@
             </p>
             <hr class="plan__divider">
             <ul class="plan__list">
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>1 mês do Essencial</strong>: remodelação, cores, organização e posts</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>1 mês do Essencial</strong>: remodelação, cores, organização e <strong>posts 3x por semana</strong></span></li>
               <li class="is-plus"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span><strong>Criação do site</strong> profissional, publicado e no ar</span></li>
               <li class="is-plus"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span><strong>Manutenção do site</strong>: ajustes e atualizações por R$ 20/mês</span></li>
               <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Parcelamento facilitado</span></li>
@@ -594,7 +594,7 @@
       $$('[data-wa-plan]').forEach((a) => {
         const plan = a.dataset.waPlan;
         const detail = plan === 'Combo Social + Site'
-          ? `(R$ ${PRICING.combo} + R$ ${PRICING.manutencao}/mês de manutenção)`
+          ? `(1 mês do Essencial com posts 3x por semana + site, R$ ${PRICING.combo} + R$ ${PRICING.manutencao}/mês de manutenção)`
           : `com posts ${FREQ_LABEL[freq]} (R$ ${PRICING[plan.toLowerCase()][freq]}/mês)`;
         a.href = waLink(`Olá, Fabrício! Tenho interesse no pacote ${plan} ${detail}. Podemos conversar?`);
       });
