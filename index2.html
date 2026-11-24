@@ -1,0 +1,4106 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--
+  ================================================================
+    PORTFÓLIO — FABRÍCIO FURLAN
+    Arquivo único: HTML + CSS + JavaScript puro (vanilla).
+    Única dependência externa: Google Fonts.
+
+    🔎 COMO EDITAR
+    Use Ctrl+F e procure por  ✏️ EDITAR  — cada ponto marcado
+    explica exatamente o que trocar (foto, links, currículo,
+    projetos, perguntas do quiz, formulário etc.).
+
+    ESTRUTURA DO ARQUIVO
+      1. <head>   → SEO, Open Graph, fontes, tema e CSS
+      2. <body>   → header, seções 01–08, footer
+      3. <script> → interações (tema, menu, laboratório, form…)
+  ================================================================
+  -->
+
+  <!-- ============ SEO ============ -->
+  <title>Fabrício Furlan — Estágio em TI | IT Assistant</title>
+  <meta name="description" content="Portfólio de Fabrício Furlan, estudante de Gestão da TI na FIAP e IT Assistant. Projetos web publicados na Vercel e Netlify, IA generativa e suporte de TI. Mineiros do Tietê – SP.">
+  <meta name="author" content="Fabrício Furlan">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#faf8f5">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- ✏️ EDITAR: URL oficial do site (publicado na Vercel). Se mudar de domínio, troque "fabriciofurlan.vercel.app"
+       (aparece aqui, no Open Graph e no JSON-LD logo abaixo). -->
+  <link rel="canonical" href="https://fabriciofurlan.vercel.app/">
+
+  <!-- ============ OPEN GRAPH (WhatsApp, LinkedIn, Facebook) ============ -->
+  <meta property="og:type" content="profile">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Fabrício Furlan">
+  <meta property="og:title" content="Fabrício Furlan — Estágio em TI | IT Assistant">
+  <meta property="og:description" content="Estudante de TI na FIAP, movido por IA, desenvolvimento web e resolução de problemas reais.">
+  <meta property="og:url" content="https://fabriciofurlan.vercel.app/">
+  <!-- ✏️ EDITAR: a imagem de compartilhamento precisa de URL ABSOLUTA (https://…).
+       Suba o arquivo og-image.png (1200×630) na mesma pasta do index.html. -->
+  <meta property="og:image" content="https://fabriciofurlan.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fabrício Furlan — Estágio em TI | IT Assistant">
+  <meta property="profile:first_name" content="Fabrício">
+  <meta property="profile:last_name" content="Furlan">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fabrício Furlan — Estágio em TI | IT Assistant">
+  <meta name="twitter:description" content="Estudante de TI na FIAP, movido por IA, desenvolvimento web e resolução de problemas reais.">
+  <meta name="twitter:image" content="https://fabriciofurlan.vercel.app/og-image.png">
+
+  <!-- Favicon em SVG embutido (monograma FF) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23124559'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23faf8f5'%3EFF%3C/text%3E%3C/svg%3E">
+
+  <!-- Dados estruturados (ajuda o Google a entender quem você é) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Fabrício Furlan",
+    "jobTitle": "Estagiário de TI | IT Assistant",
+    "url": "https://fabriciofurlan.vercel.app/",
+    "email": "mailto:fabriciofurlan89@gmail.com",
+    "telephone": "+55-14-98801-4684",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mineiros do Tietê",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "FIAP" },
+      { "@type": "EducationalOrganization", "name": "ETEC" }
+    ],
+    "knowsAbout": ["Inteligência Artificial", "Desenvolvimento Web", "HTML", "CSS", "JavaScript", "Git", "Suporte de TI", "Google Planilhas"],
+    "knowsLanguage": ["pt-BR", "en"],
+    "sameAs": ["https://github.com/fafafurlan"]
+  }
+  </script>
+
+  <!-- ============ FONTES (Google Fonts) ============ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tema aplicado ANTES da pintura da página (evita "piscar" claro → escuro) -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      var theme = null;
+      try { theme = localStorage.getItem('ff-theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      root.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <style>
+    /* ================================================================
+       1. DESIGN TOKENS — cores, fontes, espaçamentos
+       Paleta: off-white + azul petróleo. Todas as combinações de
+       texto passam no contraste WCAG AA (mín. 4.5:1).
+       ================================================================ */
+    :root {
+      /* Cores — tema claro */
+      --bg: #faf8f5;
+      --bg-alt: #f2eee7;
+      --surface: #ffffff;
+      --surface-2: #f6f3ee;
+      --ink: #14202a;
+      --ink-soft: #33414c;
+      --muted: #5a6670;
+      --line: #e6e0d6;
+      --line-strong: #d3cbbd;
+      --accent: #124559;          /* azul petróleo */
+      --accent-hover: #0b3243;
+      --accent-soft: #e2edf0;
+      --accent-ink: #ffffff;      /* texto sobre o acento */
+      --glow: rgba(18, 69, 89, .10);
+      --grid-line: rgba(18, 69, 89, .07);
+      --wa: #198754;              /* verde WhatsApp acessível (contraste 4.5:1 com branco) */
+      --wa-hover: #146c43;
+      --ok: #1d7a4a;
+      --ok-soft: #e3f2ea;
+      --err: #b42318;
+      --err-soft: #fbe9e7;
+
+      /* Faixa de conquistas (seção invertida) */
+      --band-bg: #124559;
+      --band-ink: #ffffff;
+      --band-muted: #c4dbe2;
+      --band-accent: #9fd3e2;
+
+      /* Sombras */
+      --shadow-sm: 0 1px 2px rgba(20, 32, 42, .06), 0 1px 1px rgba(20, 32, 42, .04);
+      --shadow-md: 0 10px 30px -12px rgba(20, 32, 42, .18), 0 2px 6px rgba(20, 32, 42, .05);
+      --shadow-lg: 0 28px 60px -24px rgba(18, 69, 89, .35), 0 4px 12px rgba(20, 32, 42, .06);
+
+      /* Tipografia */
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+      /* Layout */
+      --container: 1160px;
+      --gutter: 20px;
+      --header-h: 64px;
+      --radius-sm: 10px;
+      --radius: 14px;
+      --radius-lg: 22px;
+      --ease: cubic-bezier(.2, .7, .2, 1);
+    }
+
+    /* Tema escuro — ativado pelo toggle (data-theme="dark") */
+    [data-theme="dark"] {
+      --bg: #0d1418;
+      --bg-alt: #111a1f;
+      --surface: #151f25;
+      --surface-2: #1a252c;
+      --ink: #e8eef1;
+      --ink-soft: #c5d0d6;
+      --muted: #98a8b1;
+      --line: #24323a;
+      --line-strong: #33454f;
+      --accent: #7cc4d8;
+      --accent-hover: #a3d8e6;
+      --accent-soft: #16303a;
+      --accent-ink: #08161c;
+      --glow: rgba(124, 196, 216, .09);
+      --grid-line: rgba(124, 196, 216, .06);
+      --ok: #5fd39a;
+      --ok-soft: #10281d;
+      --err: #ff8a80;
+      --err-soft: #2e1614;
+
+      --band-bg: #10232b;
+      --band-ink: #e8eef1;
+      --band-muted: #a9bfc8;
+      --band-accent: #7cc4d8;
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+      --shadow-md: 0 12px 30px -12px rgba(0, 0, 0, .6);
+      --shadow-lg: 0 28px 60px -24px rgba(0, 0, 0, .75), 0 0 0 1px rgba(124, 196, 216, .06);
+      color-scheme: dark;
+    }
+
+    @media (min-width: 768px) {
+      :root { --gutter: 32px; --header-h: 72px; }
+    }
+
+    /* ================================================================
+       2. RESET & BASE
+       ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      scroll-padding-top: calc(var(--header-h) + 16px);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: clip;
+    }
+
+    [hidden] { display: none !important; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { cursor: pointer; background: none; border: 0; padding: 0; }
+    ul, ol { padding: 0; }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+
+    /* Foco visível e consistente para navegação por teclado */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      font-optical-sizing: auto;
+    }
+    h1 em, h2 em, h3 em, p em.accent {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* Transição suave ao trocar de tema */
+    .theme-transition,
+    .theme-transition *,
+    .theme-transition *::before,
+    .theme-transition *::after {
+      transition: background-color .45s ease, border-color .45s ease, color .45s ease, fill .45s ease !important;
+    }
+
+    /* ================================================================
+       3. UTILITÁRIOS
+       ================================================================ */
+    .container {
+      width: min(100% - 2 * var(--gutter), var(--container));
+      margin-inline: auto;
+    }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 16px;
+      z-index: 100;
+      padding: .75rem 1.1rem;
+      border-radius: var(--radius-sm);
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 600;
+      text-decoration: none;
+      transition: top .2s var(--ease);
+    }
+    .skip-link:focus { top: 12px; }
+
+    .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+    /* Ícones SVG (sprite no início do <body>) */
+    .icon {
+      display: inline-block;
+      width: 1.15em;
+      height: 1.15em;
+      flex-shrink: 0;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle;
+    }
+
+    /* ================================================================
+       4. BOTÕES & ELEMENTOS INTERATIVOS
+       ================================================================ */
+    .btn {
+      --btn-bg: transparent;
+      --btn-ink: var(--ink);
+      --btn-border: transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      min-height: 48px;
+      padding: .8rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid var(--btn-border);
+      background: var(--btn-bg);
+      color: var(--btn-ink);
+      font-weight: 600;
+      font-size: .95rem;
+      line-height: 1;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform .25s var(--ease), background-color .25s, border-color .25s, color .25s, box-shadow .25s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0) scale(.98); }
+    .btn .icon { transition: transform .25s var(--ease); }
+    .btn:hover .icon--arrow { transform: translateX(3px); }
+    .btn:hover .icon--down { transform: translateY(2px); }
+
+    .btn--primary { --btn-bg: var(--accent); --btn-ink: var(--accent-ink); }
+    .btn--primary:hover { --btn-bg: var(--accent-hover); box-shadow: var(--shadow-lg); }
+
+    .btn--ghost { --btn-border: var(--line-strong); --btn-bg: var(--surface); }
+    .btn--ghost:hover { --btn-border: var(--accent); --btn-ink: var(--accent); }
+
+    .btn--wa { --btn-bg: var(--wa); --btn-ink: #ffffff; }
+    .btn--wa:hover { --btn-bg: var(--wa-hover); box-shadow: 0 18px 40px -18px rgba(25, 135, 84, .6); }
+
+    .btn--sm { min-height: 44px; padding: .6rem 1.05rem; font-size: .875rem; }
+    .btn--lg { min-height: 56px; padding: 1rem 1.6rem; font-size: 1rem; }
+
+    .btn[disabled] { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .icon-btn {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+      background: var(--surface);
+      transition: border-color .25s, color .25s, transform .3s var(--ease), background-color .25s;
+    }
+    .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .icon-btn--sm { width: 38px; height: 38px; }
+    .icon-btn--sm .icon { width: 1rem; height: 1rem; }
+
+    /* Badges e tags */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      list-style: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .5rem .95rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      transition: transform .25s var(--ease), border-color .25s, box-shadow .25s;
+    }
+    .badge:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-sm); }
+    .badge__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--c, var(--accent));
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--c, var(--accent)) 18%, transparent);
+    }
+    .badge--lg { padding: .75rem 1.15rem; font-size: 1rem; color: var(--ink); }
+    .badge--lg .icon { color: var(--accent); }
+
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .02em;
+      padding: .3rem .6rem;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* ================================================================
+       5. HEADER FIXO + MENU
+       ================================================================ */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      height: var(--header-h);
+      border-bottom: 1px solid transparent;
+      transition: background-color .3s, border-color .3s, backdrop-filter .3s;
+    }
+    .site-header.is-scrolled,
+    .site-header.menu-open {
+      background: var(--bg);
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      -webkit-backdrop-filter: saturate(160%) blur(14px);
+      backdrop-filter: saturate(160%) blur(14px);
+      border-color: var(--line);
+    }
+    .site-header.menu-open { background: var(--bg); }
+
+    /* Barra de progresso de leitura */
+    .scroll-progress {
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 2px;
+      background: var(--accent);
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      height: 100%;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.12rem;
+      letter-spacing: -.01em;
+      text-decoration: none;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+    .brand__mark {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-style: italic;
+      font-size: .95rem;
+      transition: transform .4s var(--ease);
+    }
+    .brand:hover .brand__mark { transform: rotate(-8deg) scale(1.05); }
+
+    .nav__list { display: flex; gap: .15rem; list-style: none; }
+    .nav__link {
+      position: relative;
+      display: block;
+      padding: .5rem .65rem;
+      border-radius: 999px;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color .2s, background-color .2s;
+    }
+    .nav__link:hover { color: var(--ink); background: var(--surface-2); }
+    .nav__link.is-active { color: var(--accent); }
+    .nav__link.is-active::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 2px;
+      width: 4px;
+      height: 4px;
+      margin-left: -2px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .nav__cta { display: none; }
+
+    .header__actions { display: flex; align-items: center; gap: .5rem; }
+
+    .theme-toggle .icon--sun { display: none; }
+    [data-theme="dark"] .theme-toggle .icon--sun { display: inline-block; }
+    [data-theme="dark"] .theme-toggle .icon--moon { display: none; }
+    .theme-toggle:hover { transform: rotate(18deg); }
+
+    .menu-toggle .icon--close { display: none; }
+    .menu-toggle[aria-expanded="true"] .icon--close { display: inline-block; }
+    .menu-toggle[aria-expanded="true"] .icon--menu { display: none; }
+
+    .header__cta { display: none; }
+    @media (min-width: 560px) { .header__cta { display: inline-flex; } }
+
+    /* Menu mobile (abaixo de 1100px) */
+    @media (max-width: 1099.98px) {
+      .nav {
+        position: fixed;
+        top: var(--header-h);
+        left: 0;
+        right: 0;
+        max-height: calc(100dvh - var(--header-h));
+        overflow-y: auto;
+        padding: 1rem var(--gutter) 1.75rem;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        box-shadow: var(--shadow-md);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity .25s var(--ease), transform .25s var(--ease), visibility 0s linear .25s;
+      }
+      .nav.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: opacity .25s var(--ease), transform .25s var(--ease), visibility 0s;
+      }
+      .nav__list { flex-direction: column; gap: .15rem; }
+      .nav__link { padding: .85rem 1rem; font-size: 1.05rem; border-radius: var(--radius-sm); }
+      .nav__link.is-active { background: var(--accent-soft); }
+      .nav__link.is-active::after { display: none; }
+      .nav__cta { display: flex; width: 100%; margin-top: 1rem; }
+    }
+    @media (min-width: 1100px) {
+      .menu-toggle { display: none; }
+    }
+
+    /* ================================================================
+       6. SEÇÕES — estrutura comum
+       ================================================================ */
+    .section { padding-block: clamp(4.5rem, 10vw, 8rem); position: relative; }
+    .section--alt { background: var(--bg-alt); }
+
+    .section-head { max-width: 680px; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+    .section-title {
+      margin-top: .9rem;
+      font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+    }
+    .section-lead {
+      margin-top: 1rem;
+      max-width: 58ch;
+      font-size: 1.075rem;
+      color: var(--muted);
+    }
+
+    /* Layout em duas colunas com título "grudado" (sticky) */
+    .split { display: grid; gap: 2.5rem; }
+    @media (min-width: 960px) {
+      .split {
+        grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+        gap: 4.5rem;
+        align-items: start;
+      }
+      .split > .section-head {
+        position: sticky;
+        top: calc(var(--header-h) + 2.5rem);
+        margin-bottom: 0;
+      }
+    }
+
+    /* ================================================================
+       7. HERO
+       ================================================================ */
+    .hero {
+      position: relative;
+      isolation: isolate;
+      padding-top: calc(var(--header-h) + clamp(2rem, 6vw, 5rem));
+      padding-bottom: clamp(3rem, 7vw, 6rem);
+      overflow: hidden;
+    }
+    /* Grade técnica sutil ao fundo */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 75% 35%, #000 15%, transparent 72%);
+      mask-image: radial-gradient(ellipse 80% 70% at 75% 35%, #000 15%, transparent 72%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 680px;
+      height: 680px;
+      top: -180px;
+      right: -200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--glow) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero__grid { display: grid; gap: 2.5rem; align-items: center; }
+    .hero__visual { order: -1; justify-self: center; }
+    @media (min-width: 900px) {
+      .hero__grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 3rem; }
+      .hero__visual { order: 0; justify-self: end; }
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .4rem .85rem .4rem .7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      box-shadow: var(--shadow-sm);
+    }
+    .status__dot {
+      position: relative;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+    }
+    .status__dot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--ok);
+      animation: ping 2s var(--ease) infinite;
+    }
+
+    .hero__name {
+      margin-top: 1.4rem;
+      font-size: clamp(3rem, 9.5vw, 6.4rem);
+      line-height: .95;
+      letter-spacing: -.035em;
+      font-weight: 500;
+    }
+    .hero__name-accent { font-style: italic; color: var(--accent); }
+
+    .hero__role {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1.4rem;
+      font-family: var(--font-mono);
+      font-size: clamp(.9rem, 1.6vw, 1.05rem);
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .hero__prompt {
+      padding: .15rem .45rem;
+      border-radius: 6px;
+      background: var(--accent-soft);
+    }
+    .hero__caret {
+      width: .55em;
+      height: 1.1em;
+      background: currentColor;
+      animation: blink 1.1s steps(1) infinite;
+    }
+
+    .hero__headline {
+      margin-top: 1.1rem;
+      max-width: 34ch;
+      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    .hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+
+    .hero__contacts {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .5rem;
+      margin-top: 1.75rem;
+      list-style: none;
+    }
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      min-height: 40px;
+      padding: .45rem .9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: border-color .2s, color .2s, transform .25s var(--ease);
+    }
+    .contact-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .contact-chip .icon { color: var(--accent); }
+
+    .hero__location {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: 1.25rem;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      max-width: 520px;
+      margin-top: 2.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--line);
+    }
+    .stat { display: flex; flex-direction: column-reverse; gap: .25rem; }
+    .stat dt { font-size: .8rem; line-height: 1.35; color: var(--muted); }
+    .stat dd {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 500;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .stat dd sup { font-size: .5em; color: var(--accent); vertical-align: super; }
+
+    /* Avatar com anel de texto giratório */
+    .avatar {
+      position: relative;
+      width: clamp(210px, 34vw, 380px);
+      aspect-ratio: 1;
+    }
+    .avatar__ring {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      animation: spin 40s linear infinite;
+    }
+    .avatar__ring text {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .5px;
+      fill: var(--muted);
+    }
+    .avatar__ring circle { fill: none; stroke: var(--line-strong); stroke-dasharray: 2 5; }
+    .avatar__core {
+      position: absolute;
+      inset: 15%;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      overflow: hidden;
+      background: radial-gradient(circle at 30% 25%, #2b7591 0%, #124559 52%, #09232e 100%);
+      box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255, 255, 255, .1);
+    }
+    .avatar__core::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: linear-gradient(160deg, rgba(255, 255, 255, .18), transparent 45%);
+      pointer-events: none;
+    }
+    .avatar__initials {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(3.4rem, 9vw, 6.2rem);
+      letter-spacing: -.04em;
+      color: #f4efe6;
+      user-select: none;
+    }
+    .avatar__photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 40%; /* ✏️ ajuste o enquadramento do rosto (horizontal vertical) */
+    }
+
+    .avatar__chip {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .5rem .8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      box-shadow: var(--shadow-md);
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--ink);
+      white-space: nowrap;
+      animation: float 6s ease-in-out infinite;
+    }
+    .avatar__chip .icon { color: var(--accent); width: 1rem; height: 1rem; }
+    /* Chips nos cantos do quadrado, fora do anel de texto */
+    .avatar__chip--1 { top: -6%; left: -30%; }
+    .avatar__chip--2 { bottom: -6%; right: -32%; animation-delay: -2s; }
+    .avatar__chip--3 { bottom: -6%; left: -28%; animation-delay: -4s; }
+    @media (max-width: 899.98px) {
+      .avatar__chip { padding: .38rem .62rem; font-size: .68rem; gap: .35rem; }
+      .avatar__chip .icon { width: .85rem; height: .85rem; }
+    }
+    @media (min-width: 900px) {
+      .avatar__chip { font-size: .8rem; }
+      .avatar__chip--1 { top: -1%; left: -10%; }
+      .avatar__chip--2 { bottom: -1%; right: -12%; }
+      .avatar__chip--3 { bottom: -1%; left: -8%; }
+    }
+
+    /* Faixa rolante (marquee) */
+    .marquee {
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      background: var(--surface);
+      padding-block: 1.1rem;
+    }
+    .marquee__track {
+      display: flex;
+      width: max-content;
+      animation: marquee 45s linear infinite;
+    }
+    .marquee:hover .marquee__track { animation-play-state: paused; }
+    .marquee__group {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+      padding-right: 2.25rem;
+      list-style: none;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+    .marquee__group li { display: flex; align-items: center; gap: 2.25rem; }
+    .marquee__group li::after { content: "✦"; font-style: normal; font-size: .7em; color: var(--accent); }
+
+    /* ================================================================
+       8. SOBRE
+       ================================================================ */
+    .about__grid { display: grid; gap: 2.5rem; }
+    @media (min-width: 960px) {
+      .about__grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, .9fr); gap: 4.5rem; align-items: start; }
+    }
+    .about__bio p { font-size: 1.075rem; color: var(--ink-soft); }
+    .about__bio p + p { margin-top: 1.15rem; }
+    .about__bio p:first-child { font-size: clamp(1.15rem, 2vw, 1.3rem); color: var(--ink); line-height: 1.55; }
+    .about__bio strong { color: var(--ink); font-weight: 600; }
+
+    .facts {
+      padding: 1.75rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .facts__title {
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+    .facts dl { display: grid; gap: 1rem; }
+    .fact { display: grid; grid-template-columns: 40px 1fr; gap: .85rem; align-items: center; }
+    .fact__icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .fact dt { font-size: .78rem; color: var(--muted); line-height: 1.3; }
+    .fact dd { font-weight: 600; font-size: .95rem; line-height: 1.35; }
+
+    .tech { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+    .tech__title {
+      font-family: var(--font-body);
+      font-size: .95rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    /* ================================================================
+       9. FORMAÇÃO (timeline)
+       ================================================================ */
+    .timeline { position: relative; list-style: none; padding-left: 2rem; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 1.5rem;
+      bottom: 1.5rem;
+      width: 2px;
+      border-radius: 2px;
+      background: linear-gradient(var(--accent), var(--line));
+    }
+    .timeline__item { position: relative; }
+    .timeline__item + .timeline__item { margin-top: 1.25rem; }
+    .timeline__item::before {
+      content: "";
+      position: absolute;
+      left: calc(-2rem + 1px);
+      top: 1.85rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-alt);
+      border: 3px solid var(--accent);
+    }
+
+    .card {
+      padding: clamp(1.4rem, 3vw, 1.9rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--line-strong); }
+
+    .edu__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem 1rem; }
+    .period { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .3rem .7rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: .75rem;
+      font-weight: 600;
+    }
+    .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .edu__title { margin-top: .85rem; font-size: clamp(1.3rem, 2.4vw, 1.55rem); }
+    .edu__org {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      margin-top: .45rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .edu__desc { margin-top: .75rem; font-size: .95rem; color: var(--muted); }
+
+    /* ================================================================
+       10. SKILLS
+       ================================================================ */
+    .skills__grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    }
+    .skill-card { display: flex; flex-direction: column; gap: 1rem; }
+    .skill-card__icon {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .skill-card__icon .icon { width: 1.35rem; height: 1.35rem; }
+    .skill-card h3 { font-size: 1.3rem; }
+    .skill-list { list-style: none; display: grid; gap: .55rem; }
+    .skill-list li {
+      position: relative;
+      padding-left: 1.25rem;
+      font-size: .95rem;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+    .skill-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .6em;
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
+      background: var(--accent);
+      transform: rotate(45deg);
+    }
+
+    /* Medidor de idiomas (escala CEFR A1–C2) */
+    .lang + .lang { margin-top: 1.1rem; }
+    .lang__head { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; }
+    .lang__name { font-weight: 600; color: var(--ink); }
+    .lang__level { font-family: var(--font-mono); font-size: .75rem; color: var(--accent); }
+    .lang__note { font-size: .8rem; color: var(--muted); }
+    .cefr { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; margin-top: .5rem; }
+    .cefr span { height: 6px; border-radius: 3px; background: var(--line); }
+    .cefr span.on { background: var(--accent); }
+    .cefr__labels {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      margin-top: .3rem;
+      font-family: var(--font-mono);
+      font-size: .62rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .soft {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius-lg);
+    }
+    @media (min-width: 860px) {
+      .soft { grid-template-columns: 220px 1fr; align-items: center; gap: 2rem; }
+    }
+    .soft h3 { font-size: 1.4rem; }
+    .soft p { font-size: .9rem; color: var(--muted); margin-top: .35rem; }
+
+    /* ================================================================
+       11. EXPERIÊNCIA
+       ================================================================ */
+    .xp-card { position: relative; overflow: hidden; }
+    .xp-card:hover { transform: none; }
+    .xp-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 30%, transparent));
+    }
+    .xp__head { display: flex; flex-wrap: wrap; gap: 1rem 1.25rem; align-items: flex-start; }
+    .xp__logo {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      flex-shrink: 0;
+    }
+    .xp__logo .icon { width: 1.5rem; height: 1.5rem; }
+    .xp__titles { flex: 1 1 240px; }
+    .xp__role { font-size: clamp(1.4rem, 2.6vw, 1.75rem); }
+    .xp__org { margin-top: .3rem; font-weight: 600; color: var(--ink-soft); line-height: 1.45; }
+    .xp__org span { font-weight: 500; color: var(--muted); }
+    .xp__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      width: 100%;
+      font-family: var(--font-mono);
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    .xp__meta > span {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .3rem .65rem;
+      border-radius: 999px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+    }
+    .xp__meta .is-current { color: var(--ok); }
+    .xp__story { margin-top: 1.5rem; font-size: 1.05rem; color: var(--ink-soft); }
+
+    .xp__list { display: grid; gap: .75rem; margin-top: 1.5rem; list-style: none; }
+    .xp__item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius);
+      background: var(--surface-2);
+      border: 1px solid transparent;
+      transition: border-color .25s, background-color .25s;
+    }
+    .xp__item:hover { border-color: var(--line-strong); }
+    .xp__item-icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--accent);
+    }
+    .xp__item h4 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--font-body);
+      font-size: .98rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 1.4;
+    }
+    .xp__item p { margin-top: .25rem; font-size: .93rem; color: var(--muted); }
+    .highlight-flag {
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .2rem .5rem;
+      border-radius: 6px;
+      background: var(--accent);
+      color: var(--accent-ink);
+    }
+    .xp__tags { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed var(--line-strong); }
+
+    /* Card "próximo capítulo" — convite ao recrutador */
+    .next-chapter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      transition: border-color .25s, background-color .25s;
+    }
+    .next-chapter:hover { border-color: var(--accent); background: var(--surface); }
+    .next-chapter__label, .next-chapter__title { display: block; }
+    .next-chapter__label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .next-chapter__title { font-family: var(--font-display); font-size: 1.25rem; margin-top: .2rem; color: var(--ink); }
+    .next-chapter .icon { color: var(--accent); width: 1.4rem; height: 1.4rem; transition: transform .3s var(--ease); }
+    .next-chapter:hover .icon { transform: translateX(4px); }
+
+    /* ================================================================
+       12. PROJETOS
+       ================================================================ */
+    .projects__grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    }
+    .project {
+      --hue: 200;
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      overflow: hidden;
+      transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s;
+    }
+    .project:hover,
+    .project:focus-within { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--line-strong); }
+    @supports selector(:has(a)) {
+      .project:has(.project__link:focus-visible) { outline: 2px solid var(--accent); outline-offset: 4px; }
+      .project__link:focus-visible { outline: none; }
+    }
+
+    /* Brilho que segue o cursor */
+    .project::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent) 9%, transparent), transparent 45%);
+      opacity: 0;
+      transition: opacity .35s;
+      pointer-events: none;
+    }
+    .project:hover::after { opacity: 1; }
+
+    /* Mini "janela de navegador" ilustrativa */
+    .project__media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      padding: 1.25rem 1.25rem 0;
+      display: flex;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, hsl(var(--hue) 38% 93%), hsl(var(--hue) 30% 84%));
+    }
+    [data-theme="dark"] .project__media {
+      background: linear-gradient(135deg, hsl(var(--hue) 25% 16%), hsl(var(--hue) 28% 22%));
+    }
+    .browser {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px 10px 0 0;
+      background: var(--surface);
+      box-shadow: 0 18px 40px -16px rgba(0, 0, 0, .3);
+      transform: translateY(12px);
+      transition: transform .5s var(--ease);
+      overflow: hidden;
+    }
+    .project:hover .browser { transform: translateY(4px); }
+    .browser__bar {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .5rem .7rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface-2);
+    }
+    .browser__bar i { width: 8px; height: 8px; border-radius: 50%; background: #ff5f57; }
+    .browser__bar i:nth-child(2) { background: #febc2e; }
+    .browser__bar i:nth-child(3) { background: #28c840; }
+    .browser__url {
+      flex: 1;
+      min-width: 0;
+      margin-left: .5rem;
+      padding: .15rem .55rem;
+      border-radius: 6px;
+      background: var(--bg);
+      font-family: var(--font-mono);
+      font-size: .66rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .browser__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .85rem;
+      padding: 1rem;
+    }
+    .browser__icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: hsl(var(--hue) 45% 30%);
+      color: #ffffff;
+      transition: transform .5s var(--ease);
+    }
+    [data-theme="dark"] .browser__icon { background: hsl(var(--hue) 45% 68%); color: #0d1418; }
+    .project:hover .browser__icon { transform: scale(1.08) rotate(-4deg); }
+    .browser__icon .icon { width: 1.6rem; height: 1.6rem; }
+    .browser__lines { display: grid; gap: .35rem; justify-items: center; width: 100%; }
+    .browser__lines i { display: block; height: 6px; border-radius: 3px; background: var(--line); width: 55%; }
+    .browser__lines i:last-child { width: 35%; }
+
+    .project__body { display: flex; flex-direction: column; gap: .75rem; flex: 1; padding: 1.5rem; }
+    .project__kind {
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .project__title { font-size: 1.45rem; }
+    .project__link { color: inherit; text-decoration: none; }
+    .project__link::before { /* deixa o card inteiro clicável */
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    .project__desc { font-size: .95rem; color: var(--ink-soft); }
+    .project__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--line);
+      font-size: .88rem;
+    }
+    .project__cta { display: inline-flex; align-items: center; gap: .35rem; font-weight: 600; color: var(--accent); }
+    .project__cta .icon { transition: transform .3s var(--ease); }
+    .project:hover .project__cta .icon { transform: translate(3px, -3px); }
+    .project__host { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); }
+
+    /* ================================================================
+       13. LABORATÓRIO
+       ================================================================ */
+    .section--lab {
+      background-color: var(--bg-alt);
+      background-image: radial-gradient(var(--grid-line) 1.2px, transparent 1.2px);
+      background-size: 22px 22px;
+    }
+    .lab__grid { display: grid; gap: 1.5rem; }
+    @media (min-width: 1000px) {
+      .lab__grid { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); align-items: stretch; }
+    }
+    .lab-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .lab-card__tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .lab-card__title { margin-top: .45rem; font-size: 1.55rem; }
+    .lab-card__desc { margin-top: .5rem; font-size: .95rem; color: var(--muted); }
+
+    /* --- Demo 01: simulador de deploy --- */
+    .deploy { display: flex; flex-direction: column; gap: .85rem; flex: 1; }
+    .deploy__controls { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .75rem; }
+    .deploy__buttons { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+    .segmented {
+      display: inline-flex;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-2);
+    }
+    .segmented input { position: absolute; opacity: 0; pointer-events: none; }
+    .segmented label {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      min-height: 36px;
+      padding: .4rem .95rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background-color .25s, color .25s, box-shadow .25s;
+    }
+    .segmented input:checked + label { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-sm); }
+    .segmented input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .segmented input:disabled + label { cursor: not-allowed; opacity: .6; }
+
+    .terminal {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid #1f2a33;
+      background: #0b1116;
+      color: #c9d4dc;
+      font-family: var(--font-mono);
+      font-size: .78rem;
+      box-shadow: 0 24px 50px -28px rgba(0, 0, 0, .6);
+    }
+    .terminal__bar {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .65rem .9rem;
+      background: #111921;
+      border-bottom: 1px solid #1f2a33;
+    }
+    .terminal__dots { display: flex; gap: .35rem; }
+    .terminal__dots i { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+    .terminal__dots i:nth-child(2) { background: #febc2e; }
+    .terminal__dots i:nth-child(3) { background: #28c840; }
+    .terminal__title { flex: 1; text-align: center; color: #8b98a5; font-size: .72rem; margin-right: 42px; }
+    .terminal__screen {
+      flex: 1 1 auto;
+      height: 280px;
+      overflow-y: auto;
+      padding: 1rem 1.1rem;
+      line-height: 1.75;
+      scrollbar-width: thin;
+      scrollbar-color: #2a3742 transparent;
+    }
+    .terminal__screen:focus-visible { outline: 2px solid #79c0ff; outline-offset: -2px; border-radius: 0; }
+    .log-line { display: flex; gap: .8rem; animation: logIn .3s var(--ease) both; }
+    .log-time { color: #5f6e7a; flex-shrink: 0; }
+    .log-msg { white-space: pre-wrap; word-break: break-word; }
+    .log-line.is-cmd .log-msg { color: #e6edf3; }
+    .log-line.is-cmd .log-msg::before { content: "$ "; color: #7ee787; }
+    .log-line.is-info .log-msg { color: #c9d4dc; }
+    .log-line.is-muted .log-msg { color: #8b98a5; }
+    .log-line.is-ok .log-msg { color: #7ee787; }
+    .log-line.is-warn .log-msg { color: #e3b341; }
+    .log-line.is-link .log-msg { color: #79c0ff; text-decoration: underline; text-underline-offset: 3px; }
+    .log-cursor {
+      display: inline-block;
+      width: .55rem;
+      height: 1rem;
+      margin-top: .2rem;
+      background: #7ee787;
+      animation: blink 1.1s steps(1) infinite;
+    }
+    .terminal__footer {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: .7rem .9rem;
+      background: #0f171e;
+      border-top: 1px solid #1f2a33;
+    }
+    .progress { flex: 1; height: 4px; border-radius: 2px; background: #1f2a33; overflow: hidden; }
+    .progress__bar {
+      height: 100%;
+      width: 100%;
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, #79c0ff, #7ee787);
+      transition: transform .35s var(--ease);
+    }
+    .terminal__status { min-width: 9ch; text-align: right; font-size: .72rem; color: #8b98a5; }
+    .terminal__status.is-ready { color: #7ee787; }
+
+    /* --- Demo 02: quiz de lógica --- */
+    .quiz { display: flex; flex-direction: column; gap: 1rem; flex: 1; }
+    .quiz__top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .quiz__count { font-family: var(--font-mono); font-size: .75rem; color: var(--muted); }
+    .quiz__dots { display: flex; gap: .35rem; }
+    .quiz__dots i { width: 26px; height: 5px; border-radius: 3px; background: var(--line); transition: background-color .3s; }
+    .quiz__dots i.is-current { background: var(--accent); }
+    .quiz__dots i.is-right { background: var(--ok); }
+    .quiz__dots i.is-wrong { background: var(--err); }
+    .quiz__question {
+      font-family: var(--font-body);
+      font-size: 1.08rem;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: 0;
+    }
+    .quiz__question:focus { outline: none; }
+    .quiz__question:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .quiz__code {
+      display: inline-block;
+      margin-top: .5rem;
+      padding: .35rem .7rem;
+      border-radius: 8px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .quiz__options { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); }
+    .quiz__option {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      min-height: 52px;
+      padding: .75rem .9rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      background: var(--surface);
+      text-align: left;
+      font-weight: 500;
+      transition: border-color .2s, background-color .2s, transform .2s var(--ease), opacity .3s;
+    }
+    .quiz__option:not(:disabled):hover { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-2px); }
+    .quiz__option:disabled { cursor: default; }
+    .quiz__key {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      color: var(--muted);
+    }
+    .quiz__option.is-correct { border-color: var(--ok); background: var(--ok-soft); }
+    .quiz__option.is-correct .quiz__key { background: var(--ok); border-color: var(--ok); color: var(--surface); }
+    .quiz__option.is-wrong { border-color: var(--err); background: var(--err-soft); animation: shake .4s; }
+    .quiz__option.is-wrong .quiz__key { background: var(--err); border-color: var(--err); color: var(--surface); }
+    .quiz__option.is-dim { opacity: .5; }
+    .quiz__feedback {
+      padding: .9rem 1rem;
+      border-radius: 12px;
+      border-left: 3px solid var(--accent);
+      background: var(--surface-2);
+      font-size: .92rem;
+      color: var(--ink-soft);
+      animation: logIn .35s var(--ease) both;
+    }
+    .quiz__feedback:empty { display: none; }
+    .quiz__feedback.is-right { border-color: var(--ok); }
+    .quiz__feedback.is-wrong { border-color: var(--err); }
+    .quiz__feedback strong { color: var(--ink); }
+    .quiz__actions { display: flex; justify-content: flex-end; margin-top: auto; }
+
+    .quiz__result { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; margin-block: auto; padding-block: 1rem; }
+    .quiz__score { font-family: var(--font-display); font-size: 4rem; line-height: 1; color: var(--accent); }
+    .quiz__score span { font-size: .45em; color: var(--muted); }
+    .quiz__result h4 { font-size: 1.5rem; }
+    .quiz__result h4:focus { outline: none; }
+    .quiz__result p { color: var(--muted); }
+
+    /* ================================================================
+       14. CONQUISTAS (faixa invertida)
+       ================================================================ */
+    .band {
+      position: relative;
+      isolation: isolate;
+      background: var(--band-bg);
+      color: var(--band-ink);
+      overflow: hidden;
+    }
+    .band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
+    }
+    .band .eyebrow { color: var(--band-accent); }
+    .band .section-title { color: var(--band-ink); }
+    .band .section-title em { color: var(--band-accent); }
+    .band .section-lead { color: var(--band-muted); }
+    .band :focus-visible { outline-color: var(--band-accent); }
+
+    .medals {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+      list-style: none;
+    }
+    .medal {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.35rem 1.4rem;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, .05);
+      transition: transform .35s var(--ease), background-color .35s, border-color .35s;
+    }
+    .medal:hover { transform: translateY(-4px); background: rgba(255, 255, 255, .09); border-color: rgba(255, 255, 255, .26); }
+    .medal__emoji {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      font-size: 2.2rem;
+      line-height: 1;
+      background: radial-gradient(circle, var(--m) 0%, transparent 70%);
+      transition: transform .5s var(--ease);
+    }
+    .medal:hover .medal__emoji { transform: rotate(-12deg) scale(1.08); }
+    .medal--gold { --m: rgba(240, 190, 70, .45); }
+    .medal--silver { --m: rgba(210, 220, 230, .38); }
+    .medal--bronze { --m: rgba(214, 135, 60, .42); }
+    .medal__name { display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; line-height: 1.1; }
+    .medal__type {
+      display: block;
+      margin-top: .3rem;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--band-muted);
+    }
+
+    /* ================================================================
+       15. CONTATO
+       ================================================================ */
+    .contact__grid { display: grid; gap: 3rem; }
+    @media (min-width: 980px) {
+      .contact__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4.5rem; align-items: start; }
+    }
+    .contact__title { margin-top: .9rem; font-size: clamp(2.8rem, 7vw, 4.8rem); line-height: 1; letter-spacing: -.035em; }
+    .contact__cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+    .contact__list { display: grid; gap: .25rem; margin-top: 2.25rem; list-style: none; }
+    .contact__item {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      padding: .8rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .contact__icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .contact__label { display: block; font-size: .75rem; color: var(--muted); }
+    .contact__value {
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-word;
+      background-image: linear-gradient(var(--accent), var(--accent));
+      background-size: 0 1px;
+      background-position: 0 100%;
+      background-repeat: no-repeat;
+      transition: background-size .3s var(--ease), color .2s;
+    }
+    a.contact__value:hover { color: var(--accent); background-size: 100% 1px; }
+
+    .form-card {
+      padding: clamp(1.5rem, 4vw, 2.25rem);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow-md);
+    }
+    .form-card h3 { font-size: 1.5rem; }
+    .form-card > p { margin-top: .35rem; font-size: .92rem; color: var(--muted); }
+    .form { display: grid; gap: 1.1rem; margin-top: 1.5rem; }
+    .form__row { display: grid; gap: 1.1rem; }
+    @media (min-width: 560px) { .form__row { grid-template-columns: 1fr 1fr; } }
+    .field { display: flex; flex-direction: column; gap: .4rem; }
+    .field label { font-size: .88rem; font-weight: 600; }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: .8rem 1rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      background: var(--bg);
+      color: var(--ink);
+      transition: border-color .2s, box-shadow .2s, background-color .2s;
+    }
+    .field textarea { min-height: 140px; resize: vertical; line-height: 1.55; }
+    .field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235a6670' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+      padding-right: 2.75rem;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: var(--muted); opacity: .8; }
+    .field input:hover,
+    .field select:hover,
+    .field textarea:hover { border-color: var(--muted); }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+      background: var(--surface);
+    }
+    .field [aria-invalid="true"] { border-color: var(--err); }
+    .field__error { font-size: .8rem; color: var(--err); min-height: 0; }
+    .field__error:empty { display: none; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .form__footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+    .form__note { font-size: .8rem; color: var(--muted); max-width: 32ch; }
+    .form__status { font-size: .9rem; font-weight: 500; }
+    .form__status:empty { display: none; }
+    .form__status.is-ok { color: var(--ok); }
+    .form__status.is-err { color: var(--err); }
+
+    /* ================================================================
+       16. FOOTER
+       ================================================================ */
+    .site-footer { padding-block: clamp(3.5rem, 7vw, 5rem) 2rem; border-top: 1px solid var(--line); }
+    .footer__statement {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      max-width: 16ch;
+    }
+    .footer__statement em { color: var(--accent); }
+    .footer__grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: clamp(2.5rem, 5vw, 3.5rem);
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+    @media (min-width: 860px) { .footer__grid { grid-template-columns: 1.2fr 1fr auto; align-items: start; } }
+    .footer__brand p { margin-top: .75rem; font-size: .9rem; color: var(--muted); max-width: 36ch; }
+    .footer__nav ul { display: grid; grid-template-columns: repeat(2, max-content); gap: .45rem 2rem; list-style: none; }
+    .footer__nav a { font-size: .9rem; color: var(--ink-soft); text-decoration: none; }
+    .footer__nav a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .footer__social { display: flex; gap: .5rem; list-style: none; }
+    .footer__bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: .75rem;
+      margin-top: 2.5rem;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+    .footer__bottom a { color: var(--ink-soft); text-decoration: none; font-weight: 500; }
+    .footer__bottom a:hover { color: var(--accent); }
+
+    /* ================================================================
+       17. BOTÃO FLUTUANTE DO WHATSAPP + TOAST
+       ================================================================ */
+    .wa-float {
+      position: fixed;
+      right: clamp(16px, 3vw, 28px);
+      bottom: clamp(16px, 3vw, 28px);
+      z-index: 40;
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--wa);
+      color: #ffffff;
+      box-shadow: 0 14px 30px -10px rgba(25, 135, 84, .65);
+      transition: transform .3s var(--ease), background-color .25s;
+      animation: popIn .6s var(--ease) 1s both;
+    }
+    .wa-float::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--wa);
+      z-index: -1;
+      animation: ping 2.6s var(--ease) infinite;
+    }
+    .wa-float:hover { transform: scale(1.08); background: var(--wa-hover); }
+    .wa-float .icon { width: 28px; height: 28px; }
+    .wa-float__label {
+      position: absolute;
+      right: calc(100% + 12px);
+      padding: .45rem .8rem;
+      border-radius: 8px;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: .8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(6px);
+      pointer-events: none;
+      transition: opacity .25s, transform .25s var(--ease);
+    }
+    .wa-float:hover .wa-float__label,
+    .wa-float:focus-visible .wa-float__label { opacity: 1; transform: none; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 60;
+      padding: .75rem 1.15rem;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: .9rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, 16px);
+      transition: transform .4s var(--ease), opacity .3s, visibility 0s linear .4s;
+      pointer-events: none;
+    }
+    .toast.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+      transition: transform .4s var(--ease), opacity .3s, visibility 0s;
+    }
+
+    /* ================================================================
+       17b. EFEITOS INTERATIVOS — rede neural, digitação, tilt 3D, easter egg
+       ================================================================ */
+    /* Canvas da rede neural: some suavemente perto do texto (lado esquerdo) */
+    .hero__canvas {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, .55) 40%, #000 70%);
+      mask-image: linear-gradient(90deg, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, .55) 40%, #000 70%);
+    }
+    @media (max-width: 899.98px) {
+      .hero__canvas {
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .5) 45%, rgba(0, 0, 0, .2) 100%);
+        mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .5) 45%, rgba(0, 0, 0, .2) 100%);
+      }
+    }
+
+    /* Linha "// agora: …" digitada */
+    .hero__typed {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+      min-height: 1.6em;
+      margin-top: .6rem;
+      font-family: var(--font-mono);
+      font-size: clamp(.82rem, 1.4vw, .95rem);
+      color: var(--ink-soft);
+    }
+    .hero__typed-label { color: var(--muted); }
+    .hero__typed-text { color: var(--ink); }
+    .hero__typed .hero__caret { width: .5em; height: 1.05em; margin-left: -.35rem; background: var(--accent); }
+
+    /* Inclinação 3D nos cards (só em telas com mouse) */
+    .tilt { transform-style: preserve-3d; }
+    .tilt.is-tilting {
+      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px) !important;
+      transition: transform .12s ease-out, box-shadow .35s var(--ease), border-color .35s !important;
+    }
+
+    /* Títulos "decodificando" ao aparecer */
+    .is-scrambling { font-variant-ligatures: none; }
+
+    /* Confete do easter egg */
+    .confetti-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .avatar.is-party .avatar__ring { animation-duration: 2.5s; }
+
+    /* ================================================================
+       18. ANIMAÇÕES (scroll reveal + keyframes)
+       Só esconde os elementos se o JS estiver ativo (classe .js no <html>)
+       ================================================================ */
+    /* Variações de entrada (atributo data-reveal, aplicado no JS):
+       up (padrão) · left · right · zoom · fade */
+    .js .reveal {
+      opacity: 0;
+      transform: translate3d(0, 56px, 0);
+      filter: blur(5px);
+      transition:
+        opacity .9s var(--ease),
+        transform 1s var(--ease),
+        filter .9s var(--ease);
+      transition-delay: var(--d, 0ms);
+    }
+    .js .reveal[data-reveal="left"]  { transform: translate3d(-64px, 0, 0); }
+    .js .reveal[data-reveal="right"] { transform: translate3d(64px, 0, 0); }
+    .js .reveal[data-reveal="zoom"]  { transform: scale(.88); }
+    .js .reveal[data-reveal="fade"]  { transform: none; filter: none; }
+    .js .reveal.is-visible { opacity: 1; transform: none; filter: none; }
+
+    /* Itens internos entram um a um depois que o card aparece */
+    .js .reveal .skill-list li,
+    .js .reveal .xp__item,
+    .js .reveal .fact {
+      opacity: 0;
+      transform: translate3d(-14px, 0, 0);
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+      transition-delay: calc(var(--d, 0ms) + 250ms + var(--i, 0) * 70ms);
+    }
+    .js .reveal.is-visible .skill-list li,
+    .js .reveal.is-visible .xp__item,
+    .js .reveal.is-visible .fact { opacity: 1; transform: none; }
+
+    /* Linha do "eyebrow" (── 01 / Sobre) cresce ao aparecer */
+    .js .reveal .eyebrow::before { width: 0; transition: width .8s var(--ease) .2s; }
+    .js .reveal.is-visible .eyebrow::before { width: 28px; }
+
+    /* Frase do rodapé surge palavra por palavra */
+    .js .split-words .w {
+      display: inline-block;
+      opacity: 0;
+      transform: translate3d(0, .55em, 0) rotate(4deg);
+      transform-origin: 0 100%;
+      transition: opacity .7s var(--ease), transform .8s var(--ease);
+      transition-delay: calc(var(--i, 0) * 90ms);
+    }
+    .js .split-words.is-visible .w { opacity: 1; transform: none; }
+
+    /* Linha da timeline (Formação) se desenha conforme o scroll */
+    .js .timeline::before {
+      transform-origin: 50% 0;
+      transform: scaleY(var(--timeline-progress, 0));
+      transition: transform .15s linear;
+    }
+
+    @keyframes ping { 0% { transform: scale(1); opacity: .55; } 80%, 100% { transform: scale(2.4); opacity: 0; } }
+    @keyframes blink { 50% { opacity: 0; } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+    @keyframes logIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+    @keyframes popIn { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
+
+    /* Respeita quem prefere menos movimento */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .js .reveal,
+      .js .reveal .skill-list li,
+      .js .reveal .xp__item,
+      .js .reveal .fact,
+      .js .split-words .w { opacity: 1; transform: none; filter: none; }
+      .js .reveal .eyebrow::before { width: 28px; }
+      .js .timeline::before { transform: none; }
+    }
+
+    /* ================================================================
+       19. IMPRESSÃO — "Salvar como PDF" gera um currículo limpo
+       ================================================================ */
+    @media print {
+      :root, [data-theme="dark"] {
+        --bg: #ffffff; --bg-alt: #ffffff; --surface: #ffffff; --surface-2: #f5f5f5;
+        --ink: #000000; --ink-soft: #222222; --muted: #444444;
+        --line: #dddddd; --line-strong: #cccccc;
+        --accent: #124559; --accent-soft: #eef4f6; --accent-ink: #ffffff;
+        --band-bg: #ffffff; --band-ink: #000000; --band-muted: #444444; --band-accent: #124559;
+      }
+      @page { margin: 14mm; }
+      body { font-size: 10.5pt; background: #fff; }
+      .site-header, .skip-link, .wa-float, .toast, .marquee, .hero__visual, .hero__actions,
+      .section--lab, .form-card, .contact__cta, .next-chapter, .project__media, .footer__nav,
+      .footer__social, .footer__statement, .icon-btn { display: none !important; }
+      .hero { padding-top: 0; }
+      .hero::before, .hero::after, .band::before { display: none; }
+      .section { padding-block: 14pt; }
+      .js .reveal, .js .reveal .skill-list li, .js .reveal .xp__item, .js .reveal .fact,
+      .js .split-words .w { opacity: 1 !important; transform: none !important; filter: none !important; }
+      .js .timeline::before { transform: none !important; }
+      .card, .project, .facts, .medal { box-shadow: none !important; break-inside: avoid; }
+      .split, .about__grid, .contact__grid { display: block; }
+      .split > .section-head { position: static; margin-bottom: 12pt; }
+      .project__link::before { position: static; content: none; }
+      .project__footer::after { content: attr(data-url); font-family: var(--font-mono); font-size: 8pt; }
+      .medal { border-color: #ddd; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ================================================================
+       SPRITE DE ÍCONES SVG (inline — nenhuma biblioteca externa)
+       Uso: <svg class="icon"><use href="#i-nome"/></svg>
+       ================================================================ -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/><path d="M5 3v4M3 5h4M19 17v4M17 19h4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8m8 4H8m8 4H8"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 3l14 9-14 9V3z"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
+    <symbol id="i-branch" viewBox="0 0 24 24"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4M3 7l2 2 4-4M13 6h8M13 12h8M13 18h8"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m4 17 6-6-6-6M12 19h8"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ================================================================
+       HEADER FIXO
+       ================================================================ -->
+  <header class="site-header">
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <div class="container header__inner">
+      <a class="brand" href="#inicio">
+        <span class="brand__mark" aria-hidden="true">FF</span>
+        <span class="brand__name">Fabrício Furlan</span>
+      </a>
+
+      <nav class="nav" id="site-nav" aria-label="Navegação principal">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#inicio">Início</a></li>
+          <li><a class="nav__link" href="#sobre">Sobre</a></li>
+          <li><a class="nav__link" href="#formacao">Formação</a></li>
+          <li><a class="nav__link" href="#skills">Skills</a></li>
+          <li><a class="nav__link" href="#experiencia">Experiência</a></li>
+          <li><a class="nav__link" href="#projetos">Projetos</a></li>
+          <li><a class="nav__link" href="#laboratorio">Laboratório</a></li>
+          <li><a class="nav__link" href="#contato">Contato</a></li>
+        </ul>
+        <!-- CTA extra que aparece só dentro do menu mobile -->
+        <a class="btn btn--wa nav__cta" href="https://wa.me/5514988014684?text=Ol%C3%A1%2C%20Fabr%C3%ADcio!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+          Fale comigo no WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+        </a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Modo escuro" aria-pressed="false" title="Alternar tema claro/escuro">
+          <svg class="icon icon--moon" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
+          <svg class="icon icon--sun" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
+        </button>
+
+        <!-- ✏️ EDITAR: número do WhatsApp (formato internacional, só números: 55 + DDD + número).
+             Ele aparece em 5 lugares — procure por "wa.me" para trocar todos. -->
+        <a class="btn btn--primary btn--sm header__cta" href="https://wa.me/5514988014684?text=Ol%C3%A1%2C%20Fabr%C3%ADcio!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+          Fale comigo<span class="sr-only"> no WhatsApp (abre em nova aba)</span>
+        </a>
+
+        <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menu">
+          <svg class="icon icon--menu" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close" aria-hidden="true" focusable="false"><use href="#i-close"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ================================================================
+         HERO / INÍCIO
+         ================================================================ -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <!-- Fundo animado: rede neural em <canvas> (reage ao mouse). Lógica em "REDE NEURAL" no <script>. -->
+      <canvas class="hero__canvas" aria-hidden="true"></canvas>
+      <div class="container hero__grid">
+        <div class="hero__content" data-stagger>
+          <!-- ✏️ EDITAR: seu status atual (ex.: "Disponível para estágio", "Aberto a projetos freelance") -->
+          <p class="status reveal"><span class="status__dot" aria-hidden="true"></span> Disponível para estágio em TI</p>
+
+          <h1 class="hero__name reveal" id="hero-title">Fabrício <span class="hero__name-accent">Furlan</span></h1>
+
+          <p class="hero__role reveal">
+            <span class="hero__prompt" aria-hidden="true">&gt;_</span>
+            Estágio em TI <span aria-hidden="true">|</span><span class="sr-only">,</span> IT Assistant
+          </p>
+
+          <!-- ✏️ EDITAR: as frases digitadas ficam em TYPED_PHRASES no <script> -->
+          <p class="hero__typed reveal">
+            <span class="hero__typed-label" aria-hidden="true">// agora:</span>
+            <span class="hero__typed-text" aria-hidden="true">estudando TI na FIAP</span><span class="hero__caret" aria-hidden="true"></span>
+            <span class="sr-only">Atualmente: estudando TI na FIAP, explorando IA generativa, publicando projetos na Vercel, organizando dados em planilhas e resolvendo problemas reais.</span>
+          </p>
+
+          <p class="hero__headline reveal">Estudante de TI na FIAP, movido por IA, desenvolvimento web e resolução de problemas reais.</p>
+
+          <div class="hero__actions reveal">
+            <a class="btn btn--primary" href="#projetos">
+              Ver projetos
+              <svg class="icon icon--arrow" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+            </a>
+            <!-- ✏️ EDITAR — CURRÍCULO EM PDF
+                 Coloque o arquivo "curriculo-fabricio-furlan.pdf" na MESMA pasta deste index.html.
+                 Enquanto o PDF não existir, o botão abre a impressão do navegador
+                 ("Salvar como PDF") com uma versão limpa desta página. -->
+            <a class="btn btn--ghost" id="resume-btn" href="curriculo-fabricio-furlan.pdf" download>
+              <svg class="icon icon--down" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>
+              Baixar currículo
+            </a>
+          </div>
+
+          <ul class="hero__contacts reveal" aria-label="Contato direto">
+            <li>
+              <a class="contact-chip" href="mailto:fabriciofurlan89@gmail.com" title="fabriciofurlan89@gmail.com">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg> E-mail
+              </a>
+            </li>
+            <li>
+              <a class="contact-chip" href="tel:+5514988014684">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg> (14) 98801-4684
+              </a>
+            </li>
+            <li>
+              <a class="contact-chip" href="https://github.com/fafafurlan" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"/></svg> GitHub<span class="sr-only"> (abre em nova aba)</span>
+              </a>
+            </li>
+          </ul>
+
+          <p class="hero__location reveal">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg>
+            Mineiros do Tietê – SP, Brasil
+          </p>
+
+          <!-- ✏️ EDITAR: números de destaque (atualize conforme publicar novos projetos) -->
+          <dl class="stats reveal">
+            <div class="stat"><dt>medalhas em olimpíadas</dt><dd><span data-count="4">4</span></dd></div>
+            <div class="stat"><dt>projetos publicados</dt><dd><span data-count="3">3</span></dd></div>
+            <div class="stat"><dt>inglês · EF SET</dt><dd>B2</dd></div>
+          </dl>
+        </div>
+
+        <!-- Avatar -->
+        <div class="hero__visual reveal">
+          <div class="avatar">
+            <svg class="avatar__ring" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+              <defs>
+                <path id="ring-path" d="M100,100 m-90,0 a90,90 0 1,1 180,0 a90,90 0 1,1 -180,0"/>
+              </defs>
+              <circle cx="100" cy="100" r="79"/>
+              <text><textPath href="#ring-path" textLength="560" lengthAdjust="spacing">ESTUDANTE DE TI • FIAP • IA & DESENVOLVIMENTO WEB • SUPORTE DE TI •</textPath></text>
+            </svg>
+
+            <div class="avatar__core">
+              <!-- ✏️ EDITAR — SUA FOTO
+                   Suba a foto como "foto-fabricio.jpg" (quadrada, ~800×800px) na mesma pasta do index.html.
+                   Ela aparece automaticamente por cima das iniciais. Se o arquivo não existir,
+                   a imagem se remove sozinha (onerror) e as iniciais "FF" continuam aparecendo.
+                   Para enquadrar o rosto, ajuste "object-position" em .avatar__photo no CSS. -->
+              <span class="avatar__initials" aria-hidden="true">FF</span>
+              <img class="avatar__photo" src="foto-fabricio.jpg" alt="Foto de Fabrício Furlan" width="800" height="800" decoding="async" onerror="this.remove()">
+            </div>
+
+            <span class="avatar__chip avatar__chip--1" aria-hidden="true">
+              <svg class="icon" focusable="false"><use href="#i-sparkles"/></svg> IA generativa
+            </span>
+            <span class="avatar__chip avatar__chip--2" aria-hidden="true">
+              <svg class="icon" focusable="false"><use href="#i-rocket"/></svg> Deploy na Vercel
+            </span>
+            <span class="avatar__chip avatar__chip--3" aria-hidden="true">
+              <svg class="icon" focusable="false"><use href="#i-headset"/></svg> Suporte de TI
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faixa rolante decorativa -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <ul class="marquee__group">
+          <li>Inteligência Artificial</li>
+          <li>Desenvolvimento Web</li>
+          <li>Suporte de TI</li>
+          <li>Git &amp; GitHub</li>
+          <li>Deploy na Vercel &amp; Netlify</li>
+          <li>Google Planilhas</li>
+          <li>Raciocínio lógico</li>
+        </ul>
+        <ul class="marquee__group">
+          <li>Inteligência Artificial</li>
+          <li>Desenvolvimento Web</li>
+          <li>Suporte de TI</li>
+          <li>Git &amp; GitHub</li>
+          <li>Deploy na Vercel &amp; Netlify</li>
+          <li>Google Planilhas</li>
+          <li>Raciocínio lógico</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================================================================
+         01 — SOBRE MIM
+         ================================================================ -->
+    <section class="section" id="sobre" aria-labelledby="sobre-title">
+      <div class="container">
+        <div class="about__grid">
+          <div>
+            <header class="section-head reveal">
+              <p class="eyebrow">01 / Sobre mim</p>
+              <h2 class="section-title" id="sobre-title">Olá, eu sou o <em>Fabrício!</em></h2>
+            </header>
+
+            <!-- ✏️ EDITAR: sua bio -->
+            <div class="about__bio reveal">
+              <p>Sou estudante de <strong>Gestão da Tecnologia da Informação na FIAP</strong> e técnico em Administração pela ETEC. Tenho interesse especial em <strong>Inteligência Artificial, inovação e desenvolvimento web</strong> — desenvolvo projetos próprios, publicados na Vercel e Netlify e versionados no GitHub.</p>
+              <p>Uso <strong>IA generativa</strong> no dia a dia para acelerar o desenvolvimento e criar conteúdo. Atualmente estagio na <strong>Polícia Civil</strong>, onde presto suporte de informática, organizo dados e produzo documentos técnicos com precisão.</p>
+              <p>Sou atencioso, comunicativo e tenho forte raciocínio lógico — comprovado por medalhas em olimpíadas de matemática.</p>
+            </div>
+          </div>
+
+          <aside class="facts reveal" aria-labelledby="facts-title">
+            <h3 class="facts__title" id="facts-title">Em resumo</h3>
+            <dl>
+              <div class="fact">
+                <span class="fact__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-pin"/></svg></span>
+                <div><dt>Base</dt><dd>Mineiros do Tietê – SP</dd></div>
+              </div>
+              <div class="fact">
+                <span class="fact__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-cap"/></svg></span>
+                <div><dt>Estudando</dt><dd>Gestão da TI · FIAP</dd></div>
+              </div>
+              <div class="fact">
+                <span class="fact__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-briefcase"/></svg></span>
+                <div><dt>Atualmente</dt><dd>Estagiário · Polícia Civil – SP</dd></div>
+              </div>
+              <div class="fact">
+                <span class="fact__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-globe"/></svg></span>
+                <div><dt>Idiomas</dt><dd>Português (nativo) · Inglês B2</dd></div>
+              </div>
+              <div class="fact">
+                <span class="fact__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-sparkles"/></svg></span>
+                <div><dt>Interesses</dt><dd>IA, inovação e desenvolvimento web</dd></div>
+              </div>
+            </dl>
+          </aside>
+        </div>
+
+        <!-- ✏️ EDITAR: tecnologias. A cor do pontinho é definida em style="--c: #cor" -->
+        <div class="tech reveal">
+          <h3 class="tech__title">Tecnologias e ferramentas do meu dia a dia</h3>
+          <ul class="badges" role="list" data-stagger>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#e34f26" aria-hidden="true"></span>HTML</li>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#1572b6" aria-hidden="true"></span>CSS</li>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#e8c400" aria-hidden="true"></span>JavaScript</li>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#f05032" aria-hidden="true"></span>Git</li>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#6e5494" aria-hidden="true"></span>GitHub</li>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#5a6670" aria-hidden="true"></span>Vercel</li>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#00ad9f" aria-hidden="true"></span>Netlify</li>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#0f9d58" aria-hidden="true"></span>Google Planilhas</li>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#217346" aria-hidden="true"></span>Excel</li>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#10a37f" aria-hidden="true"></span>ChatGPT</li>
+            <li class="badge reveal"><span class="badge__dot" style="--c:#d97757" aria-hidden="true"></span>Claude</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         02 — FORMAÇÃO
+         ================================================================ -->
+    <section class="section section--alt" id="formacao" aria-labelledby="formacao-title">
+      <div class="container split">
+        <header class="section-head reveal">
+          <p class="eyebrow">02 / Formação</p>
+          <h2 class="section-title" id="formacao-title">Base acadêmica em <em>tecnologia</em> e gestão.</h2>
+          <p class="section-lead">Combino a formação técnica em Administração com a graduação em TI: visão de negócio e de tecnologia trabalhando juntas.</p>
+        </header>
+
+        <!-- ✏️ EDITAR: cursos (copie um <li class="timeline__item"> inteiro para adicionar outro) -->
+        <ol class="timeline" data-stagger>
+          <li class="timeline__item reveal">
+            <article class="card">
+              <div class="edu__top">
+                <p class="period"><time datetime="2026-11">nov/2026</time> – <time datetime="2029-12">dez/2029</time> (previsão)</p>
+                <span class="pill">Cursando</span>
+              </div>
+              <h3 class="edu__title">Tecnólogo em Gestão da Tecnologia da Informação</h3>
+              <p class="edu__org">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cap"/></svg> FIAP
+              </p>
+              <p class="edu__desc">Graduação voltada a sistemas, infraestrutura, dados e gestão de projetos de tecnologia.</p>
+            </article>
+          </li>
+          <li class="timeline__item reveal">
+            <article class="card">
+              <div class="edu__top">
+                <p class="period"><time datetime="2025-02">fev/2025</time> – <time datetime="2026-12">dez/2026</time></p>
+                <span class="pill">Em andamento</span>
+              </div>
+              <h3 class="edu__title">Técnico em Administração</h3>
+              <p class="edu__org">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cap"/></svg> ETEC
+              </p>
+              <p class="edu__desc">Base em gestão, processos, organização e comunicação: a visão de negócio que levo para a tecnologia.</p>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         03 — SKILLS (hard + soft)
+         ================================================================ -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">03 / Skills</p>
+          <h2 class="section-title" id="skills-title">O que eu sei <em>fazer</em>.</h2>
+          <p class="section-lead">Ferramentas e conhecimentos que uso nos meus projetos e no estágio, e que continuo aprimorando todos os dias.</p>
+        </header>
+
+        <!-- ✏️ EDITAR: hard skills, uma coluna por <article> -->
+        <div class="skills__grid" data-stagger>
+          <article class="card skill-card reveal">
+            <span class="skill-card__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-code"/></svg></span>
+            <h3>Programação &amp; Web</h3>
+            <ul class="skill-list">
+              <li>Noções de desenvolvimento de software</li>
+              <li>Lógica de programação</li>
+              <li>HTML e CSS</li>
+              <li>JavaScript</li>
+              <li>Git e GitHub</li>
+              <li>Deploy em Vercel e Netlify</li>
+            </ul>
+          </article>
+
+          <article class="card skill-card reveal">
+            <span class="skill-card__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-table"/></svg></span>
+            <h3>Ferramentas</h3>
+            <ul class="skill-list">
+              <li>Google Planilhas</li>
+              <li>Excel</li>
+              <li>Pacote Office</li>
+            </ul>
+          </article>
+
+          <article class="card skill-card reveal">
+            <span class="skill-card__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-sparkles"/></svg></span>
+            <h3>Inteligência Artificial</h3>
+            <ul class="skill-list">
+              <li>IA generativa: ChatGPT e Claude</li>
+              <li>IA aplicada à programação</li>
+              <li>Geração de imagens</li>
+              <li>Criação de conteúdo</li>
+            </ul>
+          </article>
+
+          <article class="card skill-card reveal">
+            <span class="skill-card__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-globe"/></svg></span>
+            <h3>Idiomas</h3>
+            <div class="lang">
+              <div class="lang__head">
+                <span class="lang__name">Inglês</span>
+                <span class="lang__level">B2 · EF SET 2026</span>
+              </div>
+              <span class="lang__note">Intermediário avançado</span>
+              <div class="cefr" role="img" aria-label="Nível B2, o quarto de seis níveis da escala europeia CEFR">
+                <span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span>
+              </div>
+              <div class="cefr__labels" aria-hidden="true"><span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
+            </div>
+            <div class="lang">
+              <div class="lang__head">
+                <span class="lang__name">Português</span>
+                <span class="lang__level">Nativo</span>
+              </div>
+              <div class="cefr" aria-hidden="true">
+                <span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ✏️ EDITAR: soft skills -->
+        <div class="soft reveal">
+          <div>
+            <h3>Soft skills</h3>
+            <p>Como eu trabalho com pessoas e problemas.</p>
+          </div>
+          <ul class="badges" role="list">
+            <li class="badge badge--lg"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bulb"/></svg>Raciocínio lógico</li>
+            <li class="badge badge--lg"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>Comunicação</li>
+            <li class="badge badge--lg"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-search"/></svg>Atenção a detalhes</li>
+            <li class="badge badge--lg"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-list"/></svg>Organização</li>
+            <li class="badge badge--lg"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trend"/></svg>Vontade de aprender</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         04 — EXPERIÊNCIA
+         ================================================================ -->
+    <section class="section section--alt" id="experiencia" aria-labelledby="experiencia-title">
+      <div class="container split">
+        <header class="section-head reveal">
+          <p class="eyebrow">04 / Experiência</p>
+          <h2 class="section-title" id="experiencia-title">Onde a teoria vira <em>prática</em>.</h2>
+          <p class="section-lead">Suporte, dados e documentação num ambiente que exige precisão, sigilo e responsabilidade.</p>
+        </header>
+
+        <div>
+          <!-- ✏️ EDITAR: experiência. Para adicionar outra, copie o <article class="card xp-card"> inteiro.
+               O tempo de casa ("1 ano e X meses") é calculado sozinho a partir de data-since="AAAA-MM". -->
+          <article class="card xp-card reveal">
+            <header class="xp__head">
+              <span class="xp__logo" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-shield"/></svg></span>
+              <div class="xp__titles">
+                <h3 class="xp__role">Estagiário</h3>
+                <p class="xp__org">Delegacia de Polícia de Mineiros do Tietê <span>· Polícia Civil – SP</span></p>
+              </div>
+              <p class="xp__meta">
+                <span class="is-current"><time datetime="2025-03">mar/2025</time> – atual</span>
+                <span data-since="2025-03" hidden></span>
+              </p>
+            </header>
+
+            <p class="xp__story">Desde março de 2025, sou quem a equipe da delegacia procura quando algo na informática não funciona. Também transformo informações soltas em dados organizados e documentos claros, porque ali cada detalhe importa.</p>
+
+            <ul class="xp__list">
+              <li class="xp__item">
+                <span class="xp__item-icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-headset"/></svg></span>
+                <div>
+                  <h4>Suporte de informática</h4>
+                  <p>Presto suporte aos funcionários, identificando e resolvendo problemas do dia a dia com paciência e clareza.</p>
+                </div>
+              </li>
+              <li class="xp__item">
+                <span class="xp__item-icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-table"/></svg></span>
+                <div>
+                  <h4>Planilha “Crimes Esclarecidos” <span class="highlight-flag">Destaque</span></h4>
+                  <p>Estruturei a planilha no Google Planilhas, organizando os dados de forma clara e consultável. O trabalho foi apresentado à chefia.</p>
+                </div>
+              </li>
+              <li class="xp__item">
+                <span class="xp__item-icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-file"/></svg></span>
+                <div>
+                  <h4>Documentação técnica</h4>
+                  <p>Redijo históricos de boletins de ocorrência seguindo a Resolução SSP/SP 57/15, com precisão e no padrão exigido.</p>
+                </div>
+              </li>
+            </ul>
+
+            <ul class="tags xp__tags" role="list" aria-label="Competências aplicadas">
+              <li class="tag">Suporte ao usuário</li>
+              <li class="tag">Google Planilhas</li>
+              <li class="tag">Documentação técnica</li>
+            </ul>
+          </article>
+
+          <a class="next-chapter reveal" href="#contato">
+            <span>
+              <span class="next-chapter__label">Próximo capítulo</span>
+              <span class="next-chapter__title">Sua empresa? Vamos conversar.</span>
+            </span>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         05 — PROJETOS
+         ================================================================ -->
+    <section class="section" id="projetos" aria-labelledby="projetos-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">05 / Projetos</p>
+          <h2 class="section-title" id="projetos-title">Projetos <em>publicados</em> e no ar.</h2>
+          <p class="section-lead">Do zero ao deploy: projetos reais, versionados no GitHub e publicados na Netlify e na Vercel. Clique em um card para visitar.</p>
+        </header>
+
+        <!-- ✏️ EDITAR: projetos.
+             • --hue (0–360) muda a cor da ilustração do card (38 = âmbar, 20 = terracota, 200 = azul, 150 = verde, 270 = roxo).
+             • O ícone vem do sprite no topo do <body> (ex.: #i-book, #i-calendar, #i-branch, #i-code, #i-rocket). -->
+        <div class="projects__grid" data-stagger>
+
+          <!-- Projeto 1 -->
+          <article class="project reveal" style="--hue: 38">
+            <div class="project__media" aria-hidden="true">
+              <div class="browser">
+                <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">papiroporprincipios.netlify.app</span></div>
+                <div class="browser__body">
+                  <span class="browser__icon"><svg class="icon" focusable="false"><use href="#i-book"/></svg></span>
+                  <span class="browser__lines"><i></i><i></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__kind">Projeto pessoal · Educação</p>
+              <h3 class="project__title">
+                <a class="project__link" href="https://papiroporprincipios.netlify.app" target="_blank" rel="noopener">Papiro por Princípios<span class="sr-only"> (abre em nova aba)</span></a>
+              </h3>
+              <p class="project__desc">Banco de questões web para estudo, desenvolvido do zero, da interface à lógica, e publicado na Netlify.</p>
+              <ul class="tags" role="list" aria-label="Tecnologias">
+                <li class="tag">HTML</li><li class="tag">CSS</li><li class="tag">JavaScript</li><li class="tag">Netlify</li>
+              </ul>
+              <div class="project__footer" data-url="papiroporprincipios.netlify.app">
+                <span class="project__cta">Ver projeto <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span>
+                <span class="project__host">Netlify</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 2 -->
+          <article class="project reveal" style="--hue: 20">
+            <div class="project__media" aria-hidden="true">
+              <div class="browser">
+                <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">studio-andressa-fabricio.vercel.app</span></div>
+                <div class="browser__body">
+                  <span class="browser__icon"><svg class="icon" focusable="false"><use href="#i-calendar"/></svg></span>
+                  <span class="browser__lines"><i></i><i></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__kind">Cliente real · Agendamento</p>
+              <h3 class="project__title">
+                <a class="project__link" href="https://studio-andressa-fabricio.vercel.app" target="_blank" rel="noopener">Studio Andressa Fabrício<span class="sr-only"> (abre em nova aba)</span></a>
+              </h3>
+              <p class="project__desc">Site de agendamento para serviços estéticos, criado para um cliente real e publicado na Vercel.</p>
+              <ul class="tags" role="list" aria-label="Tecnologias">
+                <li class="tag">Web</li><li class="tag">Deploy Vercel</li><li class="tag">Cliente real</li>
+              </ul>
+              <div class="project__footer" data-url="studio-andressa-fabricio.vercel.app">
+                <span class="project__cta">Ver projeto <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span>
+                <span class="project__host">Vercel</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 3 -->
+          <article class="project reveal" style="--hue: 200">
+            <div class="project__media" aria-hidden="true">
+              <div class="browser">
+                <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">github.com/fafafurlan</span></div>
+                <div class="browser__body">
+                  <span class="browser__icon"><svg class="icon" focusable="false"><use href="#i-branch"/></svg></span>
+                  <span class="browser__lines"><i></i><i></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__kind">Código aberto · Versionamento</p>
+              <h3 class="project__title">
+                <a class="project__link" href="https://github.com/fafafurlan" target="_blank" rel="noopener">Portfólio &amp; GitHub<span class="sr-only"> (abre em nova aba)</span></a>
+              </h3>
+              <p class="project__desc">Organização e publicação dos meus projetos com versionamento contínuo. O histórico de evolução está aberto no GitHub.</p>
+              <ul class="tags" role="list" aria-label="Tecnologias">
+                <li class="tag">Git</li><li class="tag">GitHub</li>
+              </ul>
+              <div class="project__footer" data-url="github.com/fafafurlan">
+                <span class="project__cta">Ver perfil <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span>
+                <span class="project__host">GitHub</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ✏️ EDITAR — MODELO PARA NOVO PROJETO
+               Para adicionar um projeto: copie o bloco <article> abaixo para FORA deste comentário
+               (logo acima desta linha) e preencha nome, link, descrição e tags.
+
+          <article class="project reveal" style="--hue: 150">
+            <div class="project__media" aria-hidden="true">
+              <div class="browser">
+                <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">meu-novo-projeto.vercel.app</span></div>
+                <div class="browser__body">
+                  <span class="browser__icon"><svg class="icon" focusable="false"><use href="#i-code"/></svg></span>
+                  <span class="browser__lines"><i></i><i></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__kind">Projeto pessoal · Categoria</p>
+              <h3 class="project__title">
+                <a class="project__link" href="https://meu-novo-projeto.vercel.app" target="_blank" rel="noopener">Nome do projeto<span class="sr-only"> (abre em nova aba)</span></a>
+              </h3>
+              <p class="project__desc">Descrição curta: o problema que ele resolve e o que você construiu.</p>
+              <ul class="tags" role="list" aria-label="Tecnologias">
+                <li class="tag">HTML</li><li class="tag">JavaScript</li><li class="tag">Vercel</li>
+              </ul>
+              <div class="project__footer" data-url="meu-novo-projeto.vercel.app">
+                <span class="project__cta">Ver projeto <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span>
+                <span class="project__host">Vercel</span>
+              </div>
+            </div>
+          </article>
+          -->
+
+          <!-- ✏️ EDITAR — SEGUNDO MODELO (ex.: projeto com IA)
+
+          <article class="project reveal" style="--hue: 270">
+            <div class="project__media" aria-hidden="true">
+              <div class="browser">
+                <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">projeto-com-ia.netlify.app</span></div>
+                <div class="browser__body">
+                  <span class="browser__icon"><svg class="icon" focusable="false"><use href="#i-sparkles"/></svg></span>
+                  <span class="browser__lines"><i></i><i></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__kind">Experimento · Inteligência Artificial</p>
+              <h3 class="project__title">
+                <a class="project__link" href="https://projeto-com-ia.netlify.app" target="_blank" rel="noopener">Nome do projeto com IA<span class="sr-only"> (abre em nova aba)</span></a>
+              </h3>
+              <p class="project__desc">Descrição curta do projeto e de como a IA foi usada.</p>
+              <ul class="tags" role="list" aria-label="Tecnologias">
+                <li class="tag">IA</li><li class="tag">JavaScript</li><li class="tag">Netlify</li>
+              </ul>
+              <div class="project__footer" data-url="projeto-com-ia.netlify.app">
+                <span class="project__cta">Ver projeto <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></span>
+                <span class="project__host">Netlify</span>
+              </div>
+            </div>
+          </article>
+          -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         06 — LABORATÓRIO DO FABRÍCIO (demos interativas)
+         A lógica das demos fica no <script> no fim do arquivo,
+         nas seções "LAB 01" e "LAB 02".
+         ================================================================ -->
+    <section class="section section--lab" id="laboratorio" aria-labelledby="lab-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">06 / Laboratório</p>
+          <h2 class="section-title" id="lab-title">Laboratório do <em>Fabrício</em>.</h2>
+          <p class="section-lead">Pequenas experiências que rodam direto no seu navegador, feitas com JavaScript puro e sem bibliotecas. Fique à vontade para clicar em tudo.</p>
+        </header>
+
+        <div class="lab__grid">
+          <!-- LAB 01 — Simulador de deploy -->
+          <article class="lab-card reveal" aria-labelledby="demo-deploy-title">
+            <div>
+              <span class="lab-card__tag">01 / Deploy</span>
+              <h3 class="lab-card__title" id="demo-deploy-title">Simulador de deploy</h3>
+              <p class="lab-card__desc">Veja como um site sai do GitHub e vai para o ar. Escolha a plataforma e clique em <strong>Build &amp; Deploy</strong>. Os logs são simulados, mas o fluxo é o mesmo que uso nos meus projetos.</p>
+            </div>
+
+            <div class="deploy">
+              <div class="deploy__controls">
+                <fieldset class="segmented" id="deploy-platform">
+                  <legend class="sr-only">Plataforma de deploy</legend>
+                  <input type="radio" id="pf-vercel" name="platform" value="vercel" checked>
+                  <label for="pf-vercel"><span aria-hidden="true">▲</span> Vercel</label>
+                  <input type="radio" id="pf-netlify" name="platform" value="netlify">
+                  <label for="pf-netlify"><span aria-hidden="true">◆</span> Netlify</label>
+                </fieldset>
+                <div class="deploy__buttons">
+                  <button class="btn btn--primary btn--sm" id="deploy-run" type="button">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>
+                    <span class="deploy__run-label">Build &amp; Deploy</span>
+                  </button>
+                  <button class="btn btn--ghost btn--sm" id="deploy-clear" type="button">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-refresh"/></svg>
+                    Limpar
+                  </button>
+                </div>
+              </div>
+
+              <div class="terminal">
+                <div class="terminal__bar">
+                  <span class="terminal__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                  <span class="terminal__title" id="term-title">fabricio@lab: ~/portfolio</span>
+                </div>
+                <div class="terminal__screen" id="term-screen" role="log" aria-live="off" aria-label="Saída do terminal de deploy" tabindex="0"></div>
+                <div class="terminal__footer">
+                  <div class="progress" aria-hidden="true"><div class="progress__bar" id="deploy-progress"></div></div>
+                  <span class="terminal__status" id="deploy-status" role="status">Aguardando</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- LAB 02 — Quiz de lógica -->
+          <article class="lab-card reveal" aria-labelledby="demo-quiz-title">
+            <div>
+              <span class="lab-card__tag">02 / Lógica</span>
+              <h3 class="lab-card__title" id="demo-quiz-title">Quiz de lógica</h3>
+              <p class="lab-card__desc">Cinco perguntas rápidas sorteadas de um banco com 22 desafios: sequências, lógica, matemática e tecnologia. O feedback aparece na hora, e cada rodada é diferente.</p>
+            </div>
+            <div class="quiz" id="quiz">
+              <noscript><p>Ative o JavaScript para jogar o quiz.</p></noscript>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         07 — OLIMPÍADAS DO CONHECIMENTO
+         ================================================================ -->
+    <section class="section band" id="conquistas" aria-labelledby="conquistas-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">07 / Conquistas</p>
+          <h2 class="section-title" id="conquistas-title">Olimpíadas do <em>Conhecimento</em>.</h2>
+          <p class="section-lead">Medalhas que comprovam o raciocínio lógico e a dedicação que levo para cada desafio.</p>
+        </header>
+
+        <!-- ✏️ EDITAR: medalhas. Classes de cor: medal--gold, medal--silver, medal--bronze.
+             Dica: acrescente o ano em <span class="medal__type">, ex.: "Ouro · 2024". -->
+        <ul class="medals" role="list" data-stagger>
+          <li class="medal medal--gold reveal">
+            <span class="medal__emoji" role="img" aria-label="Medalha de ouro">🥇</span>
+            <span><span class="medal__name">OMASP</span><span class="medal__type">Ouro</span></span>
+          </li>
+          <li class="medal medal--bronze reveal">
+            <span class="medal__emoji" role="img" aria-label="Medalha de bronze">🥉</span>
+            <span><span class="medal__name">OMASP</span><span class="medal__type">Bronze</span></span>
+          </li>
+          <li class="medal medal--silver reveal">
+            <span class="medal__emoji" role="img" aria-label="Medalha de prata">🥈</span>
+            <span><span class="medal__name">OLISP</span><span class="medal__type">Prata</span></span>
+          </li>
+          <li class="medal medal--bronze reveal">
+            <span class="medal__emoji" role="img" aria-label="Medalha de bronze">🥉</span>
+            <span><span class="medal__name">REDASP</span><span class="medal__type">Bronze</span></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         08 — CONTATO
+         ================================================================ -->
+    <section class="section" id="contato" aria-labelledby="contato-title">
+      <div class="container contact__grid">
+        <div class="reveal">
+          <p class="eyebrow">08 / Contato</p>
+          <h2 class="contact__title" id="contato-title">Vamos <em>conversar?</em></h2>
+          <p class="section-lead">Procuro oportunidades de estágio em TI e também desenvolvo sites para clientes. Se você tem uma vaga ou um projeto em mente, me chama.</p>
+
+          <div class="contact__cta">
+            <a class="btn btn--primary btn--lg" href="mailto:fabriciofurlan89@gmail.com?subject=Contato%20pelo%20portf%C3%B3lio">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>
+              Enviar e-mail
+            </a>
+            <a class="btn btn--wa btn--lg" href="https://wa.me/5514988014684?text=Ol%C3%A1%2C%20Fabr%C3%ADcio!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+              Chamar no WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+            </a>
+          </div>
+
+          <ul class="contact__list" role="list">
+            <li class="contact__item">
+              <span class="contact__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-mail"/></svg></span>
+              <div>
+                <span class="contact__label">E-mail</span>
+                <a class="contact__value" href="mailto:fabriciofurlan89@gmail.com">fabriciofurlan89@gmail.com</a>
+              </div>
+              <button class="icon-btn icon-btn--sm" type="button" data-copy="fabriciofurlan89@gmail.com" aria-label="Copiar e-mail" title="Copiar e-mail">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+              </button>
+            </li>
+            <li class="contact__item">
+              <span class="contact__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-phone"/></svg></span>
+              <div>
+                <span class="contact__label">Telefone / WhatsApp</span>
+                <a class="contact__value" href="tel:+5514988014684">(14) 98801-4684</a>
+              </div>
+              <span></span>
+            </li>
+            <li class="contact__item">
+              <span class="contact__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-github"/></svg></span>
+              <div>
+                <span class="contact__label">GitHub</span>
+                <a class="contact__value" href="https://github.com/fafafurlan" target="_blank" rel="noopener">github.com/fafafurlan<span class="sr-only"> (abre em nova aba)</span></a>
+              </div>
+              <span></span>
+            </li>
+            <li class="contact__item">
+              <span class="contact__icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#i-pin"/></svg></span>
+              <div>
+                <span class="contact__label">Localização</span>
+                <span class="contact__value">Mineiros do Tietê – SP</span>
+              </div>
+              <span></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-card reveal">
+          <h3>Envie uma mensagem</h3>
+          <p>Respondo pelo e-mail que você informar.</p>
+
+          <!-- ✏️ EDITAR — FORMULÁRIO DE CONTATO
+               MODO ATUAL: data-provider="mailto"
+                 Ao enviar, abre o aplicativo de e-mail do visitante com a mensagem pronta,
+                 endereçada a você. Funciona sem cadastro em nenhum serviço.
+
+               RECOMENDADO: Formspree (recebe as mensagens direto no seu e-mail, plano gratuito)
+                 1. Crie uma conta em https://formspree.io e clique em "New Form".
+                 2. Copie o endpoint gerado (algo como https://formspree.io/f/abcdwxyz).
+                 3. Neste <form> abaixo:
+                      • troque  action="mailto:…"  por  action="https://formspree.io/f/SEU_ID"
+                      • troque  data-provider="mailto"  por  data-provider="formspree"
+                      • apague o atributo  enctype="text/plain"
+                 Pronto: o JavaScript passa a enviar via fetch e mostra a confirmação na tela. -->
+          <form class="form" id="contact-form" action="mailto:fabriciofurlan89@gmail.com" method="post" enctype="text/plain" data-provider="mailto" novalidate>
+            <div class="form__row">
+              <div class="field">
+                <label for="f-name">Nome</label>
+                <input id="f-name" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required minlength="2" aria-describedby="f-name-err">
+                <span class="field__error" id="f-name-err"></span>
+              </div>
+              <div class="field">
+                <label for="f-email">E-mail</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com" required aria-describedby="f-email-err">
+                <span class="field__error" id="f-email-err"></span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-subject">Assunto</label>
+              <select id="f-subject" name="assunto">
+                <option>Vaga de estágio</option>
+                <option>Projeto de site (freelance)</option>
+                <option>Parceria ou outro assunto</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-message">Mensagem</label>
+              <textarea id="f-message" name="mensagem" placeholder="Conte um pouco sobre a vaga ou o projeto…" required minlength="10" aria-describedby="f-message-err"></textarea>
+              <span class="field__error" id="f-message-err"></span>
+            </div>
+            <!-- Campo anti-spam (fica invisível; robôs costumam preenchê-lo) -->
+            <div class="hp" aria-hidden="true">
+              <label for="f-gotcha">Não preencha</label>
+              <input id="f-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form__footer">
+              <p class="form__note" id="form-note">Ao enviar, seu aplicativo de e-mail abre com a mensagem pronta.</p>
+              <button class="btn btn--primary" type="submit">
+                Enviar mensagem
+                <svg class="icon icon--arrow" aria-hidden="true" focusable="false"><use href="#i-send"/></svg>
+              </button>
+            </div>
+            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer__statement reveal">Tecnologia que resolve <em>problemas reais.</em></p>
+
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#inicio">
+            <span class="brand__mark" aria-hidden="true">FF</span>
+            <span>Fabrício Furlan</span>
+          </a>
+          <p>Estudante de Gestão da TI na FIAP · IT Assistant. Mineiros do Tietê – SP.</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Links do rodapé">
+          <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#formacao">Formação</a></li>
+            <li><a href="#laboratorio">Laboratório</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+
+        <ul class="footer__social" role="list" aria-label="Contato">
+          <li><a class="icon-btn" href="mailto:fabriciofurlan89@gmail.com" aria-label="E-mail"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg></a></li>
+          <li><a class="icon-btn" href="https://wa.me/5514988014684?text=Ol%C3%A1%2C%20Fabr%C3%ADcio!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" aria-label="WhatsApp (abre em nova aba)"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg></a></li>
+          <li><a class="icon-btn" href="tel:+5514988014684" aria-label="Telefone: (14) 98801-4684"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></a></li>
+          <li><a class="icon-btn" href="https://github.com/fafafurlan" target="_blank" rel="noopener" aria-label="GitHub (abre em nova aba)"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> Fabrício Furlan. Feito à mão com HTML, CSS e JavaScript.</p>
+        <a href="#inicio">Voltar ao topo ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp -->
+  <a class="wa-float" href="https://wa.me/5514988014684?text=Ol%C3%A1%2C%20Fabr%C3%ADcio!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp (abre em nova aba)">
+    <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+    <span class="wa-float__label" aria-hidden="true">Fale comigo</span>
+  </a>
+
+  <!-- Notificação rápida (ex.: "E-mail copiado!") -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================================================================
+       JAVASCRIPT — interações (vanilla, sem bibliotecas)
+       ================================================================ -->
+  <script>
+  (() => {
+    'use strict';
+
+    /* ---------- Helpers ---------- */
+    const $ = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const reducedMotion = () => motionQuery.matches;
+
+    // localStorage pode falhar (aba anônima, bloqueio de cookies): sempre com try/catch
+    const storage = {
+      get(key) { try { return localStorage.getItem(key); } catch (e) { return null; } },
+      set(key, value) { try { localStorage.setItem(key, value); } catch (e) { /* ignora */ } }
+    };
+
+    /* =============================================================
+       1. TEMA CLARO / ESCURO (persistido em localStorage)
+       ============================================================= */
+    const THEME_KEY = 'ff-theme';
+    const root = document.documentElement;
+    const themeBtn = $('#theme-toggle');
+    const metaTheme = $('meta[name="theme-color"]');
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      const isDark = theme === 'dark';
+      if (themeBtn) themeBtn.setAttribute('aria-pressed', String(isDark));
+      if (metaTheme) metaTheme.setAttribute('content', isDark ? '#0d1418' : '#faf8f5');
+    }
+
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        if (!reducedMotion()) {
+          root.classList.add('theme-transition');
+          window.setTimeout(() => root.classList.remove('theme-transition'), 500);
+        }
+        applyTheme(next);
+        storage.set(THEME_KEY, next);
+      });
+    }
+
+    // Se o visitante nunca escolheu um tema, acompanha o sistema operacional
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+    if (systemDark.addEventListener) {
+      systemDark.addEventListener('change', (e) => {
+        if (!storage.get(THEME_KEY)) applyTheme(e.matches ? 'dark' : 'light');
+      });
+    }
+
+    /* =============================================================
+       2. HEADER: fundo ao rolar + barra de progresso de leitura
+       ============================================================= */
+    const header = $('.site-header');
+    const progressBar = $('.scroll-progress');
+    let ticking = false;
+
+    // Elementos com efeito ligado à posição do scroll
+    const heroGrid = $('.hero__grid');
+    const heroVisual = $('.hero__visual');
+    const timelineEl = $('.timeline');
+
+    function updateHeader() {
+      const y = window.scrollY;
+      const vh = window.innerHeight;
+      header.classList.toggle('is-scrolled', y > 8);
+      const max = document.documentElement.scrollHeight - vh;
+      progressBar.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
+
+      if (!reducedMotion()) {
+        // Parallax do topo: o conteúdo desce mais devagar e desbota ao rolar
+        if (heroGrid && y < vh * 1.2) {
+          const t = Math.min(y / vh, 1);
+          heroGrid.style.transform = `translate3d(0, ${(y * 0.28).toFixed(1)}px, 0)`;
+          heroGrid.style.opacity = String(1 - t * 0.75);
+          if (heroVisual) heroVisual.style.transform = `translate3d(0, ${(y * -0.12).toFixed(1)}px, 0) rotate(${(t * -6).toFixed(2)}deg)`;
+        }
+        // Linha da Formação: desenha conforme a lista passa pela tela
+        if (timelineEl) {
+          const r = timelineEl.getBoundingClientRect();
+          const progress = (vh * 0.75 - r.top) / r.height;
+          timelineEl.style.setProperty('--timeline-progress', Math.max(0, Math.min(1, progress)).toFixed(3));
+        }
+      }
+      ticking = false;
+    }
+    const requestUpdate = () => {
+      if (!ticking) { window.requestAnimationFrame(updateHeader); ticking = true; }
+    };
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
+    updateHeader();
+
+    /* =============================================================
+       3. MENU MOBILE (acessível: aria-expanded, Esc fecha)
+       ============================================================= */
+    const menuBtn = $('#menu-toggle');
+    const nav = $('#site-nav');
+
+    function setMenu(open) {
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      nav.classList.toggle('is-open', open);
+      header.classList.toggle('menu-open', open);
+    }
+    const isMenuOpen = () => menuBtn.getAttribute('aria-expanded') === 'true';
+
+    menuBtn.addEventListener('click', () => setMenu(!isMenuOpen()));
+    nav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen()) { setMenu(false); menuBtn.focus(); }
+    });
+    document.addEventListener('click', (e) => {
+      if (isMenuOpen() && !header.contains(e.target)) setMenu(false);
+    });
+    window.matchMedia('(min-width: 1100px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+
+    /* =============================================================
+       4. SCROLLSPY: destaca no menu a seção visível
+       ============================================================= */
+    const navLinks = $$('.nav__link[href^="#"]');
+    const linkById = new Map(navLinks.map((link) => [link.getAttribute('href').slice(1), link]));
+
+    if ('IntersectionObserver' in window) {
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const active = linkById.get(entry.target.id);
+          if (!active) return;
+          navLinks.forEach((link) => { link.classList.remove('is-active'); link.removeAttribute('aria-current'); });
+          active.classList.add('is-active');
+          active.setAttribute('aria-current', 'true');
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      linkById.forEach((_, id) => { const section = document.getElementById(id); if (section) spy.observe(section); });
+    }
+
+    /* =============================================================
+       5. SCROLL REVEAL (animações de entrada)
+       Elementos com a classe .reveal aparecem ao entrar na tela.
+       Dentro de [data-stagger], os filhos aparecem em sequência.
+       ============================================================= */
+    // ✏️ EDITAR: direção de entrada de cada tipo de bloco (up · left · right · zoom · fade)
+    const REVEAL_STYLES = {
+      '.section-head, .about__bio, .contact__grid > .reveal:first-child': 'left',
+      '.facts, .form-card, .xp-card, .next-chapter': 'right',
+      '.medal, .badge': 'zoom',
+      '.status, .stats': 'fade'
+    };
+    Object.entries(REVEAL_STYLES).forEach(([selector, style]) => {
+      $$(selector).forEach((el) => { if (el.classList.contains('reveal')) el.dataset.reveal = style; });
+    });
+
+    // Projetos alternam a direção: esquerda, baixo, direita…
+    $$('.projects__grid > .reveal').forEach((el, i) => {
+      el.dataset.reveal = ['left', 'up', 'right'][i % 3];
+    });
+
+    $$('[data-stagger]').forEach((group) => {
+      $$(':scope > .reveal, :scope > li > .reveal', group).forEach((el, i) => {
+        el.style.setProperty('--d', `${Math.min(i, 10) * 110}ms`);
+      });
+    });
+
+    // Itens dentro dos cards entram um a um (skills, experiência, resumo)
+    $$('.skill-list, .xp__list, .facts dl').forEach((list) => {
+      Array.from(list.children).forEach((item, i) => item.style.setProperty('--i', i));
+    });
+
+    // Frase do rodapé: quebra em palavras (preservando o <em>) para animar uma a uma
+    $$('.footer__statement').forEach((el) => {
+      let index = 0;
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const textNodes = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+      textNodes.forEach((node) => {
+        const frag = document.createDocumentFragment();
+        node.nodeValue.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          const span = document.createElement('span');
+          span.className = 'w';
+          span.style.setProperty('--i', index++);
+          span.textContent = part;
+          frag.appendChild(span);
+        });
+        node.replaceWith(frag);
+      });
+      el.classList.add('split-words');
+      el.dataset.reveal = 'fade';
+    });
+
+    const revealEls = $$('.reveal');
+    if (!('IntersectionObserver' in window) || reducedMotion()) {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    } else {
+      const revealer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+      revealEls.forEach((el) => revealer.observe(el));
+    }
+
+    /* =============================================================
+       6. CONTADORES ANIMADOS (números do hero)
+       ============================================================= */
+    function animateCount(el) {
+      const target = Number(el.dataset.count);
+      if (!Number.isFinite(target) || reducedMotion()) return;
+      const duration = 1200;
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = String(Math.round(target * eased));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+    if ('IntersectionObserver' in window) {
+      const counterObs = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { animateCount(entry.target); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.6 });
+      $$('[data-count]').forEach((el) => counterObs.observe(el));
+    }
+
+    /* =============================================================
+       7. TEMPO DE EXPERIÊNCIA calculado automaticamente
+       <span data-since="2025-03"> → "1 ano e 9 meses"
+       ============================================================= */
+    $$('[data-since]').forEach((el) => {
+      const [year, month] = el.dataset.since.split('-').map(Number);
+      const now = new Date();
+      const total = (now.getFullYear() - year) * 12 + (now.getMonth() + 1 - month) + 1;
+      if (!(total > 0)) return;
+      const y = Math.floor(total / 12);
+      const m = total % 12;
+      const parts = [];
+      if (y) parts.push(`${y} ${y > 1 ? 'anos' : 'ano'}`);
+      if (m) parts.push(`${m} ${m > 1 ? 'meses' : 'mês'}`);
+      el.textContent = parts.join(' e ');
+      el.hidden = false;
+    });
+
+    /* =============================================================
+       8. CARDS DE PROJETO: brilho que acompanha o cursor
+       ============================================================= */
+    if (window.matchMedia('(hover: hover)').matches) {
+      $$('.project').forEach((card) => {
+        card.addEventListener('pointermove', (e) => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+          card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        });
+      });
+    }
+
+    /* =============================================================
+       9. COPIAR E-MAIL + TOAST
+       ============================================================= */
+    const toast = $('#toast');
+    let toastTimer;
+    function showToast(message, duration = 2600) {
+      toast.textContent = message;
+      toast.classList.add('is-visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('is-visible'), duration);
+    }
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+      const ta = document.createElement('textarea'); // alternativa para http:// ou file://
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      ta.remove();
+      if (!ok) throw new Error('copy failed');
+    }
+
+    $$('[data-copy]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        try { await copyText(btn.dataset.copy); showToast('E-mail copiado ✓'); }
+        catch (e) { showToast(btn.dataset.copy); }
+      });
+    });
+
+    /* =============================================================
+       10. BOTÃO "BAIXAR CURRÍCULO"
+       Se o PDF ainda não estiver no servidor, o botão abre a
+       impressão do navegador ("Salvar como PDF") com o layout de
+       currículo definido no CSS (@media print).
+       ============================================================= */
+    const resumeBtn = $('#resume-btn');
+    if (resumeBtn) {
+      const usePrintFallback = () => {
+        resumeBtn.dataset.fallback = 'print';
+        resumeBtn.removeAttribute('download');
+        resumeBtn.title = 'Salvar esta página como PDF';
+      };
+      if (location.protocol === 'file:' || !window.fetch) {
+        usePrintFallback();
+      } else {
+        fetch(resumeBtn.getAttribute('href'), { method: 'HEAD', cache: 'no-store' })
+          .then((res) => {
+            const type = res.headers.get('content-type') || '';
+            if (!res.ok || type.includes('text/html')) usePrintFallback();
+          })
+          .catch(usePrintFallback);
+      }
+      resumeBtn.addEventListener('click', (e) => {
+        if (resumeBtn.dataset.fallback === 'print') {
+          e.preventDefault();
+          revealEls.forEach((el) => el.classList.add('is-visible'));
+          window.print();
+        }
+      });
+    }
+
+    /* =============================================================
+       LAB 01 — SIMULADOR DE DEPLOY
+       ✏️ EDITAR: os logs de cada plataforma ficam em DEPLOY_SCRIPTS.
+         type → cor da linha: cmd | info | muted | ok | warn | link
+         wait → tempo (ms) antes da linha aparecer
+         {hash} e {domain} são substituídos automaticamente.
+       ============================================================= */
+    const DEPLOY_SCRIPTS = {
+      vercel: {
+        label: 'Vercel',
+        domain: 'fabriciofurlan.vercel.app',
+        steps: [
+          { type: 'cmd',   text: 'git push origin main', wait: 250 },
+          { type: 'muted', text: 'Enumerating objects: 12, done. Writing objects: 100% (7/7)', wait: 550 },
+          { type: 'info',  text: '▲ Vercel: novo push detectado (branch: main, commit: {hash})', wait: 700 },
+          { type: 'info',  text: 'Cloning github.com/fafafurlan/portfolio…', wait: 600 },
+          { type: 'muted', text: 'Cloning completed: 418ms', wait: 450 },
+          { type: 'info',  text: 'Running "vercel build"', wait: 550 },
+          { type: 'muted', text: 'Installing dependencies… 0 pacotes (site estático, zero dependências)', wait: 750 },
+          { type: 'warn',  text: '⚠ Nível de café do dev em 15% ☕ (prosseguindo mesmo assim)', wait: 800 },
+          { type: 'info',  text: 'Otimizando HTML, CSS e JavaScript…', wait: 700 },
+          { type: 'ok',    text: '✓ Build concluído em /vercel/output', wait: 650 },
+          { type: 'info',  text: 'Deploying outputs to the Edge Network…', wait: 800 },
+          { type: 'info',  text: 'Assigning domain…', wait: 600 },
+          { type: 'ok',    text: '✓ Production: deploy pronto!', wait: 500 },
+          { type: 'link',  text: '→ https://{domain}', wait: 250 }
+        ]
+      },
+      netlify: {
+        label: 'Netlify',
+        domain: 'fabriciofurlan.netlify.app',
+        steps: [
+          { type: 'cmd',   text: 'git push origin main', wait: 250 },
+          { type: 'muted', text: 'Enumerating objects: 12, done. Writing objects: 100% (7/7)', wait: 550 },
+          { type: 'info',  text: '◆ Netlify: build iniciado (commit {hash})', wait: 700 },
+          { type: 'info',  text: 'Preparing Git Reference refs/heads/main', wait: 600 },
+          { type: 'muted', text: 'Fetching cached dependencies… nenhuma encontrada (nem precisa)', wait: 650 },
+          { type: 'info',  text: '❯ Build command: nenhum (site estático em HTML puro)', wait: 600 },
+          { type: 'warn',  text: '⚠ Nível de café do dev em 15% ☕ (prosseguindo mesmo assim)', wait: 800 },
+          { type: 'info',  text: '❯ Deploy site: calculando arquivos para upload…', wait: 700 },
+          { type: 'muted', text: '1 novo arquivo para enviar: index.html', wait: 500 },
+          { type: 'info',  text: 'Post processing: headers, redirects, HTML…', wait: 700 },
+          { type: 'ok',    text: '✓ Site is live ✨', wait: 600 },
+          { type: 'link',  text: '→ https://{domain}', wait: 250 }
+        ]
+      }
+    };
+
+    const deploy = {
+      screen: $('#term-screen'),
+      runBtn: $('#deploy-run'),
+      clearBtn: $('#deploy-clear'),
+      bar: $('#deploy-progress'),
+      status: $('#deploy-status'),
+      radios: $$('input[name="platform"]'),
+      runId: 0,
+      running: false
+    };
+
+    if (deploy.screen) {
+      const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, reducedMotion() ? Math.min(ms, 100) : ms));
+      const pad = (n, size = 2) => String(n).padStart(size, '0');
+      const timestamp = () => {
+        const d = new Date();
+        return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}.${pad(d.getMilliseconds(), 3)}`;
+      };
+
+      // Cursor piscando no fim do log
+      const cursor = document.createElement('span');
+      cursor.className = 'log-cursor';
+      cursor.setAttribute('aria-hidden', 'true');
+
+      function addLine(type, text, withTime = true) {
+        const line = document.createElement('div');
+        line.className = `log-line is-${type}`;
+        if (withTime) {
+          const time = document.createElement('span');
+          time.className = 'log-time';
+          time.textContent = timestamp();
+          line.appendChild(time);
+        }
+        const msg = document.createElement('span');
+        msg.className = 'log-msg';
+        msg.textContent = text;
+        line.appendChild(msg);
+        deploy.screen.insertBefore(line, cursor);
+        deploy.screen.scrollTop = deploy.screen.scrollHeight;
+      }
+
+      function setProgress(ratio) { deploy.bar.style.transform = `scaleX(${ratio})`; }
+
+      function setRunning(on) {
+        deploy.running = on;
+        deploy.runBtn.disabled = on;
+        deploy.radios.forEach((r) => { r.disabled = on; });
+        $('.deploy__run-label', deploy.runBtn).textContent = on ? 'Implantando…' : 'Build & Deploy';
+      }
+
+      function resetTerminal() {
+        deploy.screen.replaceChildren(cursor);
+        addLine('muted', '# Bem-vindo ao laboratório 👋', false);
+        addLine('muted', '# Escolha a plataforma e clique em "Build & Deploy".', false);
+        setProgress(0);
+        deploy.status.textContent = 'Aguardando';
+        deploy.status.classList.remove('is-ready');
+      }
+
+      async function runDeploy() {
+        if (deploy.running) return;
+        const id = ++deploy.runId;
+        const platform = ($('input[name="platform"]:checked') || deploy.radios[0]).value;
+        const script = DEPLOY_SCRIPTS[platform];
+        const hash = Math.random().toString(16).slice(2, 9);
+        const t0 = performance.now();
+
+        setRunning(true);
+        deploy.screen.replaceChildren(cursor);
+        setProgress(0);
+        deploy.status.classList.remove('is-ready');
+        deploy.status.textContent = `Deploy na ${script.label} iniciado…`;
+
+        for (let i = 0; i < script.steps.length; i++) {
+          const step = script.steps[i];
+          await sleep(step.wait);
+          if (id !== deploy.runId) return; // cancelado pelo botão "Limpar"
+          addLine(step.type, step.text.replace('{hash}', hash).replace('{domain}', script.domain));
+          setProgress((i + 1) / script.steps.length);
+          if (i === 0) deploy.status.textContent = 'Building…';
+        }
+
+        const secs = ((performance.now() - t0) / 1000).toFixed(1).replace('.', ',');
+        deploy.status.textContent = `Pronto · ${secs}s`;
+        deploy.status.classList.add('is-ready');
+        setRunning(false);
+      }
+
+      deploy.runBtn.addEventListener('click', runDeploy);
+      deploy.clearBtn.addEventListener('click', () => {
+        deploy.runId++; // invalida qualquer execução em andamento
+        setRunning(false);
+        resetTerminal();
+      });
+
+      resetTerminal();
+    }
+
+    /* =============================================================
+       LAB 02 — QUIZ DE LÓGICA
+       ✏️ EDITAR: banco de perguntas em QUIZ_POOL.
+         Cada rodada sorteia QUIZ_PER_ROUND perguntas do banco, sem repetir.
+         Para adicionar uma pergunta, copie um bloco { … } e ajuste:
+           q       → texto da pergunta
+           code    → (opcional) destaque em fonte monoespaçada
+           options → alternativas (2 a 5)
+           answer  → índice da alternativa correta (0 = primeira)
+           explain → explicação mostrada após a resposta
+       ============================================================= */
+    const QUIZ_PER_ROUND = 5;
+
+    const QUIZ_POOL = [
+      // --- Sequências ---
+      { q: 'Qual número completa a sequência?', code: '2, 4, 6, 8, ?', options: ['9', '10', '12', '16'], answer: 1,
+        explain: 'A sequência soma 2 a cada passo: 8 + 2 = 10.' },
+      { q: 'Qual número completa a sequência?', code: '5, 10, 15, 20, ?', options: ['22', '25', '30', '40'], answer: 1,
+        explain: 'São múltiplos de 5: o próximo é 25.' },
+      { q: 'Qual número completa a sequência?', code: '1, 2, 4, 8, ?', options: ['10', '12', '16', '32'], answer: 2,
+        explain: 'Cada número é o dobro do anterior: 8 × 2 = 16.' },
+      { q: 'Qual letra completa a sequência?', code: 'A, C, E, G, ?', options: ['H', 'I', 'J', 'K'], answer: 1,
+        explain: 'A sequência pula uma letra a cada passo: G, (H), I.' },
+      { q: 'Qual número não combina com os outros?', code: '2, 4, 7, 8', options: ['2', '4', '7', '8'], answer: 2,
+        explain: 'Todos são pares, menos o 7.' },
+
+      // --- Raciocínio lógico ---
+      { q: 'Todo gato é um animal. Mimi é um gato. Então Mimi é…', options: ['Um cachorro', 'Um animal', 'Uma planta', 'Não dá para saber'], answer: 1,
+        explain: 'Se todo gato é animal e Mimi é gato, Mimi com certeza é um animal.' },
+      { q: 'Ana é mais alta que Bia, e Bia é mais alta que Carla. Quem é a mais baixa?', options: ['Ana', 'Bia', 'Carla', 'Empate'], answer: 2,
+        explain: 'Ana > Bia > Carla. Carla é a mais baixa.' },
+      { q: 'Se A é maior que B, e B é maior que C, então…', options: ['C é maior que A', 'A é maior que C', 'A é igual a C', 'Não dá para saber'], answer: 1,
+        explain: 'É a propriedade transitiva: A > B > C, logo A > C.' },
+      { q: 'Se hoje é segunda-feira, que dia será depois de amanhã?', options: ['Terça', 'Quarta', 'Quinta', 'Domingo'], answer: 1,
+        explain: 'Amanhã é terça; depois de amanhã é quarta.' },
+      { q: 'Quantos meses do ano têm 28 dias?', options: ['1', '6', '11', '12'], answer: 3,
+        explain: 'Pegadinha! Todos os 12 meses têm pelo menos 28 dias.' },
+      { q: '3 máquinas fazem 3 peças em 3 minutos. Quantas peças 1 máquina faz em 3 minutos?', options: ['1', '3', '9', '6'], answer: 0,
+        explain: 'Cada máquina faz 1 peça a cada 3 minutos.' },
+
+      // --- Matemática rápida ---
+      { q: 'Quanto é a metade da metade de 100?', options: ['10', '25', '50', '75'], answer: 1,
+        explain: 'A metade de 100 é 50; a metade de 50 é 25.' },
+      { q: 'Quantos minutos há em 2 horas e meia?', options: ['120', '130', '150', '250'], answer: 2,
+        explain: '2 horas = 120 min, mais 30 min = 150 minutos.' },
+      { q: 'Quando o relógio marca exatamente 3h, qual é o ângulo entre os ponteiros?', options: ['45°', '90°', '120°', '180°'], answer: 1,
+        explain: 'Cada hora vale 30° (360° ÷ 12). De 12 até 3 são 3 × 30° = 90°.' },
+
+      // --- Tecnologia ---
+      { q: 'Quantos bits formam 1 byte?', options: ['4', '8', '16', '1024'], answer: 1,
+        explain: '1 byte = 8 bits.' },
+      { q: 'Quanto vale este número binário em decimal?', code: '10₂', options: ['1', '2', '10', '100'], answer: 1,
+        explain: 'Em binário, "10" significa 1×2 + 0×1 = 2.' },
+      { q: 'Qual atalho de teclado copia um texto selecionado?', options: ['Ctrl + V', 'Ctrl + C', 'Ctrl + Z', 'Ctrl + X'], answer: 1,
+        explain: 'Ctrl + C copia, Ctrl + V cola, Ctrl + X recorta e Ctrl + Z desfaz.' },
+      { q: 'Qual destes é um navegador de internet?', options: ['Excel', 'Windows', 'Chrome', 'Word'], answer: 2,
+        explain: 'O Chrome é um navegador. Excel e Word são programas do Office e o Windows é um sistema operacional.' },
+      { q: 'Para que serve o HTML?', options: ['Estruturar páginas web', 'Editar fotos', 'Fazer planilhas', 'Gravar vídeos'], answer: 0,
+        explain: 'HTML define a estrutura das páginas: títulos, textos, links e imagens.' },
+      { q: 'Qual extensão de arquivo é de uma planilha do Excel?', options: ['.mp3', '.xlsx', '.png', '.html'], answer: 1,
+        explain: '.xlsx é o formato das planilhas do Excel.' },
+      { q: 'O que significa a sigla "IA"?', options: ['Internet Avançada', 'Inteligência Artificial', 'Informação Automática', 'Interface Aberta'], answer: 1,
+        explain: 'IA = Inteligência Artificial, como o ChatGPT e o Claude.' },
+      { q: 'Em programação, qual o resultado de:', code: 'true && false', options: ['true', 'false'], answer: 1,
+        explain: 'O operador && (E) só dá true quando os dois lados são true.' }
+    ];
+
+    // Sorteia perguntas do banco sem repetir (embaralhamento Fisher–Yates)
+    function drawQuestions() {
+      const pool = QUIZ_POOL.slice();
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      return pool.slice(0, Math.min(QUIZ_PER_ROUND, pool.length));
+    }
+    let QUIZ_QUESTIONS = drawQuestions();
+
+    // Mensagem final de acordo com o desempenho (do pior para o melhor)
+    const QUIZ_RESULTS = [
+      { title: 'Lógica é treino!', text: 'Cada rodada sorteia perguntas novas. Bora mais uma?' },
+      { title: 'Bom começo!', text: 'Dá para gabaritar. Tente de novo com outras perguntas.' },
+      { title: 'Muito bom!', text: 'Faltou pouco para gabaritar.' },
+      { title: 'Gabaritou! 🥇', text: 'Raciocínio de medalhista. Bora conversar?' }
+    ];
+
+    const quizEl = $('#quiz');
+    if (quizEl) {
+      const state = { index: 0, score: 0, results: [] };
+      const KEYS = ['A', 'B', 'C', 'D', 'E'];
+
+      // Pequeno helper para criar elementos sem innerHTML
+      const el = (tag, className, text) => {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text != null) node.textContent = text;
+        return node;
+      };
+
+      function renderDots() {
+        const dots = el('span', 'quiz__dots');
+        dots.setAttribute('aria-hidden', 'true');
+        QUIZ_QUESTIONS.forEach((_, i) => {
+          const dot = el('i');
+          if (state.results[i] === true) dot.className = 'is-right';
+          else if (state.results[i] === false) dot.className = 'is-wrong';
+          else if (i === state.index) dot.className = 'is-current';
+          dots.appendChild(dot);
+        });
+        return dots;
+      }
+
+      function renderQuestion(focus = false) {
+        const data = QUIZ_QUESTIONS[state.index];
+        const top = el('div', 'quiz__top');
+        top.append(el('span', 'quiz__count', `Pergunta ${state.index + 1} de ${QUIZ_QUESTIONS.length}`), renderDots());
+
+        const question = el('h4', 'quiz__question', data.q);
+        question.tabIndex = -1;
+        if (data.code) {
+          question.appendChild(document.createElement('br'));
+          question.appendChild(el('code', 'quiz__code', data.code));
+        }
+
+        const options = el('div', 'quiz__options');
+        options.setAttribute('role', 'group');
+        options.setAttribute('aria-label', 'Alternativas');
+        data.options.forEach((label, i) => {
+          const btn = el('button', 'quiz__option');
+          btn.type = 'button';
+          const key = el('span', 'quiz__key', KEYS[i]);
+          key.setAttribute('aria-hidden', 'true');
+          btn.append(key, el('span', '', label));
+          btn.addEventListener('click', () => answer(i, options, feedback, actions));
+          options.appendChild(btn);
+        });
+
+        const feedback = el('p', 'quiz__feedback');
+        feedback.setAttribute('aria-live', 'polite');
+        const actions = el('div', 'quiz__actions');
+
+        quizEl.replaceChildren(top, question, options, feedback, actions);
+        if (focus) question.focus({ preventScroll: true });
+      }
+
+      function answer(choice, options, feedback, actions) {
+        const data = QUIZ_QUESTIONS[state.index];
+        const correct = choice === data.answer;
+        state.results[state.index] = correct;
+        if (correct) state.score++;
+
+        $$('.quiz__option', options).forEach((btn, i) => {
+          btn.disabled = true;
+          if (i === data.answer) btn.classList.add('is-correct');
+          else if (i === choice) btn.classList.add('is-wrong');
+          else btn.classList.add('is-dim');
+        });
+
+        // Atualiza os pontinhos de progresso
+        quizEl.querySelector('.quiz__dots').replaceWith(renderDots());
+
+        feedback.className = `quiz__feedback ${correct ? 'is-right' : 'is-wrong'}`;
+        feedback.replaceChildren(
+          el('strong', '', correct ? 'Correto! ' : `Quase! A resposta é ${data.options[data.answer]}. `),
+          document.createTextNode(data.explain)
+        );
+
+        const isLast = state.index === QUIZ_QUESTIONS.length - 1;
+        const next = el('button', 'btn btn--primary btn--sm', isLast ? 'Ver resultado' : 'Próxima pergunta');
+        next.type = 'button';
+        next.addEventListener('click', () => {
+          if (isLast) renderResult();
+          else { state.index++; renderQuestion(true); }
+        });
+        actions.replaceChildren(next);
+        next.focus({ preventScroll: true });
+      }
+
+      function renderResult() {
+        const total = QUIZ_QUESTIONS.length;
+        const msg = QUIZ_RESULTS[Math.round((state.score / total) * (QUIZ_RESULTS.length - 1))];
+        const wrap = el('div', 'quiz__result');
+
+        const score = el('p', 'quiz__score', String(state.score));
+        score.appendChild(el('span', '', `/${total}`));
+        score.setAttribute('aria-label', `Você acertou ${state.score} de ${total}`);
+
+        const title = el('h4', '', msg.title);
+        title.tabIndex = -1;
+
+        const again = el('button', 'btn btn--ghost btn--sm', 'Jogar de novo');
+        again.type = 'button';
+        again.addEventListener('click', () => {
+          QUIZ_QUESTIONS = drawQuestions(); // novo sorteio a cada rodada
+          state.index = 0; state.score = 0; state.results = [];
+          renderQuestion(true);
+        });
+
+        wrap.append(score, title, el('p', '', msg.text), again);
+        quizEl.replaceChildren(wrap);
+        title.focus({ preventScroll: true });
+      }
+
+      renderQuestion(false);
+    }
+
+    /* =============================================================
+       13. FORMULÁRIO DE CONTATO
+       Modo definido em data-provider no <form>: "mailto" ou "formspree".
+       ============================================================= */
+    const form = $('#contact-form');
+    if (form) {
+      const status = $('#form-status');
+      const provider = form.dataset.provider || 'mailto';
+      const EMAIL_TO = 'fabriciofurlan89@gmail.com'; // ✏️ EDITAR: e-mail que recebe as mensagens (modo mailto)
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+      if (provider === 'formspree') {
+        $('#form-note').textContent = 'Sua mensagem chega direto na minha caixa de entrada.';
+      }
+
+      const rules = {
+        nome: (v) => v.trim().length >= 2 || 'Informe seu nome.',
+        email: (v) => emailRe.test(v.trim()) || 'Informe um e-mail válido.',
+        mensagem: (v) => v.trim().length >= 10 || 'Escreva uma mensagem com pelo menos 10 caracteres.'
+      };
+
+      function validateField(input) {
+        const rule = rules[input.name];
+        if (!rule) return true;
+        const result = rule(input.value);
+        const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+        const ok = result === true;
+        input.setAttribute('aria-invalid', String(!ok));
+        if (errorEl) errorEl.textContent = ok ? '' : result;
+        return ok;
+      }
+
+      // Revalida enquanto digita, só depois do primeiro erro
+      form.addEventListener('input', (e) => {
+        if (e.target.getAttribute('aria-invalid') === 'true') validateField(e.target);
+      });
+
+      function setStatus(message, type) {
+        status.textContent = message;
+        status.className = `form__status ${type ? `is-${type}` : ''}`;
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (form.elements._gotcha && form.elements._gotcha.value) return; // robô
+
+        const fields = ['nome', 'email', 'mensagem'].map((name) => form.elements[name]);
+        const invalid = fields.filter((input) => !validateField(input));
+        if (invalid.length) {
+          invalid[0].focus();
+          setStatus('Confira os campos destacados.', 'err');
+          return;
+        }
+
+        const data = {
+          nome: form.elements.nome.value.trim(),
+          email: form.elements.email.value.trim(),
+          assunto: form.elements.assunto.value,
+          mensagem: form.elements.mensagem.value.trim()
+        };
+
+        if (provider === 'formspree') {
+          const submitBtn = $('button[type="submit"]', form);
+          submitBtn.disabled = true;
+          setStatus('Enviando…');
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { Accept: 'application/json' }
+            });
+            if (!res.ok) throw new Error(String(res.status));
+            form.reset();
+            setStatus('Mensagem enviada! Obrigado pelo contato, respondo em breve.', 'ok');
+          } catch (err) {
+            setStatus(`Não foi possível enviar agora. Escreva direto para ${EMAIL_TO}.`, 'err');
+          } finally {
+            submitBtn.disabled = false;
+          }
+          return;
+        }
+
+        // Modo mailto: abre o app de e-mail com tudo preenchido
+        const subject = `[Portfólio] ${data.assunto}: ${data.nome}`;
+        const body = `${data.mensagem}\n\n—\n${data.nome}\n${data.email}`;
+        window.location.href = `mailto:${EMAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        setStatus(`Abrindo seu aplicativo de e-mail… Se nada acontecer, escreva para ${EMAIL_TO}.`, 'ok');
+      });
+    }
+
+    /* =============================================================
+       REDE NEURAL NO HERO (canvas 2D, sem bibliotecas)
+       • Nós se movem devagar e se conectam quando estão próximos.
+       • O mouse vira um "nó" extra que atrai e conecta os vizinhos.
+       • Pausa quando o hero sai da tela ou a aba fica oculta.
+       • Com "menos movimento" ativado, desenha um quadro estático.
+       ✏️ EDITAR: densidade e alcance em NET_CONFIG.
+       ============================================================= */
+    const NET_CONFIG = {
+      areaPerNode: 15000,  // px² por nó (menor = mais nós)
+      minNodes: 24,
+      maxNodes: 90,
+      linkDistance: 140,   // distância máxima para ligar dois nós
+      mouseDistance: 190,  // alcance do mouse
+      speed: 0.35
+    };
+
+    const heroCanvas = $('.hero__canvas');
+    if (heroCanvas && heroCanvas.getContext) {
+      const ctx = heroCanvas.getContext('2d');
+      const hero = heroCanvas.parentElement;
+      const finePointer = window.matchMedia('(pointer: fine)').matches;
+      const mouse = { x: 0, y: 0, active: false };
+      let width = 0, height = 0, nodes = [], rgb = '18, 69, 89';
+      let rafId = null, inView = true;
+
+      // Lê a cor de acento atual do CSS (muda com o tema)
+      function readAccent() {
+        const hex = getComputedStyle(root).getPropertyValue('--accent').trim().replace('#', '');
+        if (/^[0-9a-f]{6}$/i.test(hex)) {
+          rgb = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16)).join(', ');
+        }
+      }
+
+      function createNodes() {
+        const count = Math.round(Math.min(NET_CONFIG.maxNodes, Math.max(NET_CONFIG.minNodes, (width * height) / NET_CONFIG.areaPerNode)));
+        nodes = Array.from({ length: count }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * NET_CONFIG.speed * 2,
+          vy: (Math.random() - 0.5) * NET_CONFIG.speed * 2,
+          r: Math.random() * 1.6 + 0.9
+        }));
+      }
+
+      function resize() {
+        const rect = hero.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = rect.width;
+        height = rect.height;
+        heroCanvas.width = Math.round(width * dpr);
+        heroCanvas.height = Math.round(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        createNodes();
+        if (reducedMotion()) draw();
+      }
+
+      function step() {
+        for (const n of nodes) {
+          // Atração suave em direção ao mouse
+          if (mouse.active) {
+            const dx = mouse.x - n.x, dy = mouse.y - n.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < NET_CONFIG.mouseDistance && dist > 1) {
+              n.vx += (dx / dist) * 0.012;
+              n.vy += (dy / dist) * 0.012;
+            }
+          }
+          // Limita a velocidade para o movimento continuar calmo
+          const speed = Math.hypot(n.vx, n.vy);
+          const max = NET_CONFIG.speed * 2.2;
+          if (speed > max) { n.vx = (n.vx / speed) * max; n.vy = (n.vy / speed) * max; }
+
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 0 || n.x > width) { n.vx *= -1; n.x = Math.max(0, Math.min(width, n.x)); }
+          if (n.y < 0 || n.y > height) { n.vy *= -1; n.y = Math.max(0, Math.min(height, n.y)); }
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        const link = NET_CONFIG.linkDistance;
+
+        // Ligações entre nós próximos
+        ctx.lineWidth = 1;
+        for (let i = 0; i < nodes.length; i++) {
+          const a = nodes[i];
+          for (let j = i + 1; j < nodes.length; j++) {
+            const b = nodes[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            if (Math.abs(dx) > link || Math.abs(dy) > link) continue;
+            const dist = Math.hypot(dx, dy);
+            if (dist < link) {
+              ctx.strokeStyle = `rgba(${rgb}, ${(1 - dist / link) * 0.32})`;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Ligações com o mouse
+        if (mouse.active) {
+          for (const n of nodes) {
+            const dist = Math.hypot(mouse.x - n.x, mouse.y - n.y);
+            if (dist < NET_CONFIG.mouseDistance) {
+              ctx.strokeStyle = `rgba(${rgb}, ${(1 - dist / NET_CONFIG.mouseDistance) * 0.55})`;
+              ctx.beginPath();
+              ctx.moveTo(mouse.x, mouse.y);
+              ctx.lineTo(n.x, n.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Nós
+        ctx.fillStyle = `rgba(${rgb}, 0.55)`;
+        for (const n of nodes) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function loop() {
+        step();
+        draw();
+        rafId = requestAnimationFrame(loop);
+      }
+      function start() {
+        if (rafId || reducedMotion() || !inView || document.hidden) return;
+        rafId = requestAnimationFrame(loop);
+      }
+      function stop() {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+
+      readAccent();
+      resize();
+      if (reducedMotion()) draw(); else start();
+
+      // Pausa fora da tela / aba oculta
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => {
+          inView = entry.isIntersecting;
+          inView ? start() : stop();
+        }).observe(hero);
+      }
+      document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+      motionQuery.addEventListener('change', () => { stop(); reducedMotion() ? draw() : start(); });
+
+      // Redimensionamento (com debounce)
+      let resizeTimer;
+      const onResize = () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 150); };
+      if ('ResizeObserver' in window) new ResizeObserver(onResize).observe(hero);
+      else window.addEventListener('resize', onResize);
+
+      // Troca de tema → nova cor
+      new MutationObserver(() => { readAccent(); if (!rafId) draw(); })
+        .observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+
+      // Mouse (só em dispositivos com ponteiro preciso)
+      if (finePointer) {
+        hero.addEventListener('pointermove', (e) => {
+          const rect = hero.getBoundingClientRect();
+          mouse.x = e.clientX - rect.left;
+          mouse.y = e.clientY - rect.top;
+          mouse.active = true;
+        });
+        hero.addEventListener('pointerleave', () => { mouse.active = false; });
+      }
+    }
+
+    /* =============================================================
+       FRASES DIGITADAS NO HERO ("// agora: …")
+       ✏️ EDITAR: frases em TYPED_PHRASES
+       ============================================================= */
+    const TYPED_PHRASES = [
+      'estudando TI na FIAP',
+      'explorando IA generativa',
+      'publicando projetos na Vercel',
+      'organizando dados em planilhas',
+      'resolvendo problemas reais'
+    ];
+
+    const typedEl = $('.hero__typed-text');
+    if (typedEl && !reducedMotion()) {
+      let phrase = 0, chars = TYPED_PHRASES[0].length, deleting = true;
+      const tick = () => {
+        const text = TYPED_PHRASES[phrase];
+        if (deleting) {
+          chars--;
+          if (chars <= 0) { deleting = false; phrase = (phrase + 1) % TYPED_PHRASES.length; }
+        } else {
+          chars++;
+        }
+        typedEl.textContent = TYPED_PHRASES[phrase].slice(0, Math.max(0, chars));
+        let delay = deleting ? 32 : 60 + Math.random() * 50;
+        if (!deleting && chars >= TYPED_PHRASES[phrase].length) { deleting = true; delay = 2200; }
+        if (deleting && chars <= 0) delay = 350;
+        setTimeout(tick, document.hidden ? 1000 : delay);
+      };
+      setTimeout(tick, 2600); // espera a primeira frase ser lida
+    }
+
+    /* =============================================================
+       TÍTULOS "DECODIFICANDO" (efeito scramble)
+       Embaralha só os nós de texto, preservando <em> e o restante
+       da marcação. Leitores de tela recebem o texto final via aria-label.
+       ============================================================= */
+    const SCRAMBLE_CHARS = 'abcdefghijklmnopqrstuvwxyz0123456789#%&*+=<>/';
+
+    function scrambleText(el) {
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const textNodes = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+      const finals = textNodes.map((n) => n.nodeValue);
+      el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
+      el.classList.add('is-scrambling');
+
+      // Momento (em quadros) em que cada letra "trava" no valor final
+      let offset = 0;
+      const plans = finals.map((text) => Array.from(text, () => offset++ * 0.9 + 6 + Math.random() * 18));
+      const lastFrame = Math.max(...plans.flat(), 0);
+      let frame = 0;
+
+      const render = () => {
+        textNodes.forEach((node, i) => {
+          const chars = Array.from(finals[i]);
+          node.nodeValue = chars.map((ch, k) => {
+            if (frame >= plans[i][k] || /\s|[.,!?]/.test(ch)) return ch;
+            return SCRAMBLE_CHARS[(Math.random() * SCRAMBLE_CHARS.length) | 0];
+          }).join('');
+        });
+        if (frame++ < lastFrame) requestAnimationFrame(render);
+        else {
+          textNodes.forEach((node, i) => { node.nodeValue = finals[i]; });
+          el.classList.remove('is-scrambling');
+        }
+      };
+      requestAnimationFrame(render);
+    }
+
+    if ('IntersectionObserver' in window && !reducedMotion()) {
+      const scrambleObs = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { scrambleText(entry.target); obs.unobserve(entry.target); }
+        });
+      }, { threshold: 0.6 });
+      $$('.section-title, .contact__title').forEach((title) => scrambleObs.observe(title));
+    }
+
+    /* =============================================================
+       INCLINAÇÃO 3D NOS CARDS (só com mouse)
+       ============================================================= */
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reducedMotion()) {
+      const MAX_TILT = 7; // graus
+      $$('.project, .skill-card, .medal, .timeline .card').forEach((card) => {
+        card.classList.add('tilt');
+        card.addEventListener('pointermove', (e) => {
+          const r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - 0.5;
+          const py = (e.clientY - r.top) / r.height - 0.5;
+          card.style.setProperty('--ry', `${(px * MAX_TILT * 2).toFixed(2)}deg`);
+          card.style.setProperty('--rx', `${(-py * MAX_TILT * 2).toFixed(2)}deg`);
+          card.classList.add('is-tilting');
+        });
+        card.addEventListener('pointerleave', () => {
+          card.classList.remove('is-tilting');
+          card.style.removeProperty('--rx');
+          card.style.removeProperty('--ry');
+        });
+      });
+    }
+
+    /* =============================================================
+       EASTER EGG 🎮
+       • Teclado: código Konami  ↑ ↑ ↓ ↓ ← → ← → B A
+       • Celular: toque 7 vezes seguidas na foto do topo
+       ============================================================= */
+    function launchConfetti() {
+      if (reducedMotion()) return;
+      const canvas = document.createElement('canvas');
+      canvas.className = 'confetti-canvas';
+      canvas.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(canvas);
+      const c = canvas.getContext('2d');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const W = window.innerWidth, H = window.innerHeight;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      c.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const colors = ['#124559', '#7cc4d8', '#e8b94a', '#198754', '#d97757', '#f4efe6'];
+      const pieces = Array.from({ length: 160 }, () => ({
+        x: W / 2 + (Math.random() - 0.5) * 120,
+        y: H * 0.35,
+        vx: (Math.random() - 0.5) * 14,
+        vy: -Math.random() * 13 - 4,
+        w: Math.random() * 8 + 5,
+        h: Math.random() * 5 + 3,
+        rot: Math.random() * Math.PI,
+        vr: (Math.random() - 0.5) * 0.3,
+        color: colors[(Math.random() * colors.length) | 0]
+      }));
+      const startTime = performance.now();
+      const frame = (now) => {
+        const t = now - startTime;
+        c.clearRect(0, 0, W, H);
+        c.globalAlpha = Math.max(0, 1 - Math.max(0, t - 1800) / 900);
+        for (const p of pieces) {
+          p.vy += 0.32; p.vx *= 0.99;
+          p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+          c.save(); c.translate(p.x, p.y); c.rotate(p.rot);
+          c.fillStyle = p.color; c.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          c.restore();
+        }
+        if (t < 2700) requestAnimationFrame(frame); else canvas.remove();
+      };
+      requestAnimationFrame(frame);
+    }
+
+    let eggCooldown = false;
+    function easterEgg() {
+      if (eggCooldown) return;
+      eggCooldown = true;
+      setTimeout(() => { eggCooldown = false; }, 3000);
+      launchConfetti();
+      const avatar = $('.avatar');
+      if (avatar) { avatar.classList.add('is-party'); setTimeout(() => avatar.classList.remove('is-party'), 3000); }
+      showToast('🎮 Easter egg encontrado! Curiosidade de dev: vamos conversar?', 4500);
+    }
+
+    const KONAMI = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'];
+    let konamiPos = 0;
+    document.addEventListener('keydown', (e) => {
+      if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
+      const key = (e.key || '').toLowerCase();
+      konamiPos = key === KONAMI[konamiPos] ? konamiPos + 1 : (key === KONAMI[0] ? 1 : 0);
+      if (konamiPos === KONAMI.length) { konamiPos = 0; easterEgg(); }
+    });
+
+    const avatarEl = $('.avatar');
+    if (avatarEl) {
+      let taps = 0, tapTimer;
+      avatarEl.addEventListener('click', () => {
+        taps++;
+        clearTimeout(tapTimer);
+        tapTimer = setTimeout(() => { taps = 0; }, 1500);
+        if (taps >= 7) { taps = 0; easterEgg(); }
+      });
+    }
+
+    // Recado para quem abrir o console do navegador 👀
+    console.log(
+      '%c👋 Oi, dev curioso!%c\nEste site foi feito à mão com HTML, CSS e JavaScript puro.\nDica: tente o código Konami ↑ ↑ ↓ ↓ ← → ← → B A\n— Fabrício · fabriciofurlan89@gmail.com',
+      'font: 600 16px system-ui; color: #124559;',
+      'font: 13px system-ui; color: #5a6670;'
+    );
+
+    /* =============================================================
+       14. ANO ATUAL NO RODAPÉ
+       ============================================================= */
+    const yearEl = $('#year');
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  })();
+  </script>
+</body>
+</html>
